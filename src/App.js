@@ -2,9 +2,7 @@
 import firebase from './firebase';
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue, push} from 'firebase/database';
-
 // Components
-
 // Assets
 import './App.css';
 
@@ -20,7 +18,6 @@ const App = () => {
   const [userData, setUserData] = useState([]);
   const [initials, setInitials] = useState('');
   const [emojiReact, setEmojiReact] = useState('');
-  // const [date, setDate] = useState('');
   const [count, setCounter] = useState(6);
 
   // Firebase Connection
@@ -64,7 +61,6 @@ const App = () => {
     storeDeck();
   }, []);
   // console.log(deck);
-
 
   // If I used useEffect on this... [card, setCard], would I say setCard(randomCard) and then reference the random card with "card" in the remainder of the function?
   const drawCard = () => {
@@ -111,7 +107,6 @@ const App = () => {
     // console.log(event.target.value);
     setEmojiReact(event.target.value);
   }
-  // console.log(emojiReact);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -155,9 +150,6 @@ const App = () => {
     setCounter(subtractResults);
   }
 
-
-
-
   // console.log(img);
   // console.log(deck);
 
@@ -176,7 +168,6 @@ const App = () => {
           </div>
           {hasClicked ? 
             <div>
-            <p>{date}</p>
             <h2>{name}</h2>
             <h3>Meaning</h3>
             <p>{meaning}</p>
@@ -185,10 +176,10 @@ const App = () => {
             <form>
               <h3>Save your card!</h3>
               <label htmlFor="initials">Initials:</label>
-              <input type="text" id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} />
+                <input type="text" id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} placeholder='AZ'/>
               <fieldset onChange={handleRadioChange} value={emojiReact}>
                 {/* Frown Icon Button */}
-                <input type='radio' name='emoji-react' value='dislike' id='dislike' selected />
+                <input type='radio' name='emoji-react' value='dislike' id='dislike' selected  />
                 <label htmlFor="dislike"><img className='frown-icon icon' src="/assets/face-frown-open-regular.svg" alt="Frowning face icon." /></label>
                 {/* Meg Icon Button */}
                 <input type='radio' name='emoji-react' value='meh' id='meh' />
@@ -231,6 +222,11 @@ const App = () => {
           </div>
         </div>
       </main>
+      <footer>
+        <div className="footer-container">
+          <p>Created by Fiona Freemark for Juno College of Technology</p>
+        </div>
+      </footer>
     </div>
   );
 }
