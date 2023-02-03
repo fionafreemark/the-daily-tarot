@@ -20,15 +20,8 @@ const App = () => {
   const [userData, setUserData] = useState([]);
   const [initials, setInitials] = useState('');
   const [emojiReact, setEmojiReact] = useState('');
-  // const [tarotState, setTarotState] = useState({});
   const [date, setDate] = useState('');
   const [count, setCounter] = useState(6);
-
-  // useEffect(() => {
- 
-  //   setDate(currentDate);
-  //   console.log(date);
-  // }, [])
 
   // Firebase Connection
   useEffect(() => {
@@ -149,7 +142,7 @@ const App = () => {
   // Show & Hide Results Buttons
   // arrayLength counts the number of responses currently logged to Firebase so the "Show More" and "Show Less" buttons can show and hide when appropriate. 
   const arrayLength = userData.length;
-  console.log(arrayLength);
+  // console.log(arrayLength);
 
   const handleShowMore = (event) => {
     event.preventDefault();
@@ -210,13 +203,18 @@ const App = () => {
           }
           
           <div>
+            {/* LOG OF PAST RESPONSES */}
             <ul className='log-ul'>
+              {/* userData(my Firebase data) is destructured to a new array so that we can use the reverse() array function on it. Then I use the slice() function display a minimum of 6 result slots on the page & max of 24. This data is mapped over so I can display the individual properties to the page. */}
               {[...userData].reverse().slice(0, (count)).map((log) => {
                 return (
-                  <li className='log-li'>
+                  // If you console.log(log) you'll see the objects with key inside. Use this to fill out the individual key number on each li to prevent the key props error.
+                  <li key={log.key} className='log-li'>
                     <p className='log-initials'>{log.tarotCard.initials}</p>
                     <h6>{log.tarotCard.date}</h6>
                     <h4>{log.tarotCard.name}</h4>
+                    {/* EMOJI REACTS */}
+                    {/* Emoji reactions only display if they match the user's input. */}
                     <p>{log.tarotCard.reaction === 'like'? <img className='smiling-icon icon log-icon' src="/assets/face-smile-regular.svg" alt="Smiling face icon." /> : null}</p>
                     <p>{log.tarotCard.reaction === 'meh' ? <img className='meh-icon icon log-icon' src="/assets/face-meh-regular.svg" alt="Unimpressed face icon." /> : null}</p>
                     <p>{log.tarotCard.reaction === 'dislike' ? <img className='frown-icon icon log-icon' src="/assets/face-frown-open-regular.svg" alt="Frowning face icon." /> : null}</p>
@@ -226,19 +224,10 @@ const App = () => {
                 )
               })}
             </ul>
+            {/* Buttons that display or hide based on number of results shown. Minimum 6 slots displayed, maximum 24. */}
             {count > 6 ? <button name='show-more' className="submit-button show-more" type='Submit' onClick={handleShowMore}>Show more results!</button> : null}
             {count >= 12 ? <button name='show-less' className="submit-button show-less" type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
             {count >= 24 ? null : <button name='show-more' className="submit-button show-more" type='Submit' onClick={handleShowMore}>Show more results!</button>}
-
-            {/* const tarotObject = {
-      img: img,
-      alt: alt,
-      name: name,
-      meaning: meaning,
-      description: description,
-      initials: initials,
-      reaction: emojiReact,
-    } */}
           </div>
         </div>
       </main>
