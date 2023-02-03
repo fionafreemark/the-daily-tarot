@@ -1,9 +1,57 @@
+// Modules
+import firebase from './firebase';
 import { useEffect, useState } from 'react';
+import { getDatabase, ref, onValue, push} from 'firebase/database';
+
+// Components
+
+// Assets
 import './App.css';
 
 const App = () => {
+  // Defining State:
   const [deck, setDeck] = useState({});
-  const [card, setCard] = useState({}); /* Do I need this to store the drawCard data as a stateful variable????? */
+  const [hasClicked, setHasClicked] = useState(false);
+  const [img, setImg] = useState('');
+  const [alt, setAlt] = useState('');
+  const [name, setName] = useState('');
+  const [meaning, setMeaning] = useState('');
+  const [description, setDescription] = useState('');
+  const [userData, setUserData] = useState([]);
+  const [initials, setInitials] = useState('');
+  const [emojiReact, setEmojiReact] = useState('');
+  // const [tarotState, setTarotState] = useState({});
+  const [date, setDate] = useState('');
+  const [count, setCounter] = useState(6);
+
+  // useEffect(() => {
+ 
+  //   setDate(currentDate);
+  //   console.log(date);
+  // }, [])
+
+  // Firebase Connection
+  useEffect(() => {
+    // Variable to hold database details:
+    const database = getDatabase(firebase);
+    // Variable that references our database:
+    const dbRef = ref(database);
+    // Event listener that will fire from the database & call the data 'response'
+    onValue(dbRef, (response) => {
+      // Variable to store the new state we're creating in our app
+      const newState = [];
+      // Store our response,val();
+      const dataResponse = response.val();
+      // Data is an object so we iterate using a for-in loop to access each book name.
+
+      for (let key in dataResponse) {
+        // Push each book name to an array we already created in newState
+        newState.push({key:key, tarotCard:dataResponse[key]});
+      }
+      // Call setUserData to update our components state using the local array newState:
+      setUserData(newState);
+    })
+  }, [])
 
   // API Call
   useEffect(() => {
@@ -14,8 +62,7 @@ const App = () => {
       try {
         const data = await fetch(url);
         const response = await data.json();
-        // Does setDeck set deck to = response? So I can use it lower down instead of response?
-        setDeck(response);
+        setDeck(response.cards);
         // console.log(response.cards);
       } catch (error) {
         // Error Handling
@@ -23,41 +70,178 @@ const App = () => {
     }
     storeDeck();
   }, []);
-  // console.log(deck.cards);
-  
+  // console.log(deck);
+
+
   // If I used useEffect on this... [card, setCard], would I say setCard(randomCard) and then reference the random card with "card" in the remainder of the function?
   const drawCard = () => {
     // // Randomizing function to choose a tarot card from 0 to 77.
-    const randomCard = Math.floor(Math.random() * (deck.cards.length));
-    console.log(randomCard);
-  
-    const randomCardDraw = deck.cards[randomCard];
+    const randomCard = Math.floor(Math.random() * (deck.length));
+    // console.log(randomCard);
+    // const randomCardDraw = deck[randomCard];
     // console.log(randomCardDraw);
-    
-    // imgSource = `./assets/tarot-card-${randomCard}.jpg`;
+
+    const imgSource = `/assets/tarot-card-${randomCard}.jpg`;
     // console.log(imgSource);
+    setImg(imgSource);
+    // console.log(img);
 
-    const imgAlt = `A tarot card depicting: ${deck.cards[randomCard].desc}`;
-    console.log(imgAlt);
-    
-    const cardName = deck.cards[randomCard].name;
-    console.log(cardName);
-    
-    const cardMeaning = deck.cards[randomCard].meaning_up;
-    console.log(cardMeaning);
+    const imgDesc = `${deck[randomCard].desc}`;
+    // console.log(imgDesc);
+    setDescription(imgDesc);
 
+    const imgAlt = `A tarot card depicting: ${deck[randomCard].name}`;
+    // console.log(imgAlt);
+    setAlt(imgAlt);
+
+    const cardName = deck[randomCard].name;
+    // console.log(cardName);
+    setName(cardName);
+
+    const cardMeaning = deck[randomCard].meaning_up;
+    // console.log(cardMeaning);
+    setMeaning(cardMeaning);
+
+    setHasClicked(true);
   }
-  // let imgSource = `./assets/tarot-card-1.jpg`;
-  // HTML Structure/Component Calls Etc
+
+  // This event wil trigger every time the input changes. 
+  const handleTextChange = (event) => {
+    // Tell react to update the state of our App component to be equal to whatever is currently the value of the input field 
+    setInitials(event.target.value);
+  }
+  // console.log(initials);
+
+  // This event wil trigger every time the input changes. 
+  const handleRadioChange = (event) => {
+    // Tell react to update the state of our App component to be equal to whatever is currently the value of the input field 
+    // console.log(event.target.value);
+    setEmojiReact(event.target.value);
+  }
+  // console.log(emojiReact);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const currentDate = Date();
+    // console.log(Date());
+    const tarotObject = {
+      date: currentDate,
+      img: img,
+      alt: alt,
+      name: name,
+      meaning: meaning,
+      description: description,
+      initials: initials,
+      reaction: emojiReact,
+    };
+    // console.log(tarotObject);
+    // Reference the database
+    const database = getDatabase(firebase);
+    const dbRef = ref(database);
+    // Push value of tarotObject tate to the database
+    push(dbRef, tarotObject);
+    // reset the state to an empty string
+    setInitials('');
+    setEmojiReact('');
+    
+  }
+
+  // Show & Hide Results Buttons
+  // arrayLength counts the number of responses currently logged to Firebase so the "Show More" and "Show Less" buttons can show and hide when appropriate. 
+  const arrayLength = userData.length;
+  console.log(arrayLength);
+
+  const handleShowMore = (event) => {
+    event.preventDefault();
+    const addResults = (arrayLength + 6) >= 24? 24: 24;
+    setCounter(addResults);
+  }
+  const handleShowLess = (event) => {
+    event.preventDefault();
+    const subtractResults = (arrayLength - 6) <= 6 ? 6 : 6;
+    setCounter(subtractResults);
+  }
+
+
+
+
+  // console.log(img);
+  // console.log(deck);
+
   return (
-    <div className="App">
+    <div className="App wrapper">
       <header><h1>Daily Tarot App</h1>
       </header>
-        <div className="card-container">
-          <img src={require(`./assets/tarot-card-1.jpg`)} alt="" />
-          {/* <img src={require(imgSource)} alt={imgAlt} /> */}
-          <button onClick={drawCard}>Draw a Card!</button>
+      <main>
+        <div className="outer-container">
+          {/* Ternary that displays a default image on the screen. As soon as the button is clicked, it is replaced with the drawn card. */}
+          <div className='card-container'>
+            {
+              hasClicked ? <img src={img} alt={alt} /> : <img src="/assets/tarot-card-0.jpg" alt="" />
+            }
+            <button onClick={drawCard}>Draw a Card!</button>
+          </div>
+          {hasClicked ? 
+            <div>
+            <p>{date}</p>
+            <h2>{name}</h2>
+            <h3>Meaning</h3>
+            <p>{meaning}</p>
+            <h3>Description</h3>
+            <p>{description}</p>
+            <form>
+              <h3>Save your card!</h3>
+              <label htmlFor="initials">Initials:</label>
+              <input type="text" id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} />
+              <fieldset onChange={handleRadioChange} value={emojiReact}>
+                {/* Frown Icon Button */}
+                <input type='radio' name='emoji-react' value='dislike' id='dislike' selected />
+                <label htmlFor="dislike"><img className='frown-icon icon' src="/assets/face-frown-open-regular.svg" alt="Frowning face icon." /></label>
+                {/* Meg Icon Button */}
+                <input type='radio' name='emoji-react' value='meh' id='meh' />
+                <label htmlFor="meh"><img className='meh-icon icon' src="/assets/face-meh-regular.svg" alt="Unimpressed face icon." /></label>
+                {/* Smile Icon Button */}
+                <input type='radio' name='emoji-react' value='like' id='like' />
+                <label htmlFor="like"><img className='smiling-icon icon' src="/assets/face-smile-regular.svg" alt="Smiling face icon." /></label>
+              </fieldset>
+              <button name='form-submit' className="submit-button" type='Submit' onClick={handleSubmit}>Log your card!</button>
+            </form>
+          </div> : null
+          }
+          
+          <div>
+            <ul className='log-ul'>
+              {[...userData].reverse().slice(0, (count)).map((log) => {
+                return (
+                  <li className='log-li'>
+                    <p className='log-initials'>{log.tarotCard.initials}</p>
+                    <h6>{log.tarotCard.date}</h6>
+                    <h4>{log.tarotCard.name}</h4>
+                    <p>{log.tarotCard.reaction === 'like'? <img className='smiling-icon icon log-icon' src="/assets/face-smile-regular.svg" alt="Smiling face icon." /> : null}</p>
+                    <p>{log.tarotCard.reaction === 'meh' ? <img className='meh-icon icon log-icon' src="/assets/face-meh-regular.svg" alt="Unimpressed face icon." /> : null}</p>
+                    <p>{log.tarotCard.reaction === 'dislike' ? <img className='frown-icon icon log-icon' src="/assets/face-frown-open-regular.svg" alt="Frowning face icon." /> : null}</p>
+                    <img src={log.tarotCard.img} alt={log.tarotCard.alt} className='tarot-log-img' />
+                    
+                  </li>
+                )
+              })}
+            </ul>
+            {count > 6 ? <button name='show-more' className="submit-button show-more" type='Submit' onClick={handleShowMore}>Show more results!</button> : null}
+            {count >= 12 ? <button name='show-less' className="submit-button show-less" type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
+            {count >= 24 ? null : <button name='show-more' className="submit-button show-more" type='Submit' onClick={handleShowMore}>Show more results!</button>}
+
+            {/* const tarotObject = {
+      img: img,
+      alt: alt,
+      name: name,
+      meaning: meaning,
+      description: description,
+      initials: initials,
+      reaction: emojiReact,
+    } */}
+          </div>
         </div>
+      </main>
     </div>
   );
 }

@@ -1,1 +1,81 @@
 /* GLOBAL STYLES */
+
+.wrapper {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+}
+
+.outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.card-container::after {
+  content: '';
+  background-color: black;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: -2%;
+}
+
+.img {
+  height: auto;
+  width: 100%;
+}
+
+fieldset {
+  border: none;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.log-ul {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.log-li {
+  flex-basis: 28%;
+  position: relative;
+  margin: 5% 0;
+}
+
+.log-initials {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.log-icon {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 25%;
+  bottom: -5%;
+}
+
+.tarot-log-img {
+  height: 200px;
+}
