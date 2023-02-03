@@ -20,7 +20,7 @@ const App = () => {
   const [userData, setUserData] = useState([]);
   const [initials, setInitials] = useState('');
   const [emojiReact, setEmojiReact] = useState('');
-  const [date, setDate] = useState('');
+  // const [date, setDate] = useState('');
   const [count, setCounter] = useState(6);
 
   // Firebase Connection
