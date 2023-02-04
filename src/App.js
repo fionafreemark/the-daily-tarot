@@ -3,7 +3,6 @@ import firebase from './firebase';
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
 // Components
-import Header from './Header';
 // Assets
 
 import './sass/partials/_typography.scss';
