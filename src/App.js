@@ -152,7 +152,7 @@ const App = () => {
 
   const handleShowMore = (event) => {
     event.preventDefault();
-    const addResults = (arrayLength + 6) >= 24 ? 24 : 24;
+    const addResults = (arrayLength + 6) >= 24 ? 24 : (arrayLength + 6);
     setCounter(addResults);
   }
   const handleShowLess = (event) => {
