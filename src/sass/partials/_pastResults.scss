@@ -1,0 +1,34 @@
+@use "./variables" as *;
+
+
+
+.log-ul {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.log-li {
+  flex-basis: 28%;
+  position: relative;
+  margin: 5% 0;
+}
+
+.log-initials {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.log-icon {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 25%;
+  bottom: -5%;
+}
+
+.tarot-log-img {
+  max-width: 150px;
+}

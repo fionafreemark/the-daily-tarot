@@ -1,10 +1,19 @@
 // Modules
 import firebase from './firebase';
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, onValue, push} from 'firebase/database';
+import { getDatabase, ref, onValue, push } from 'firebase/database';
 // Components
+import Header from './Header';
 // Assets
-import './App.css';
+
+import './sass/partials/_typography.scss';
+import './sass/partials/_global.scss';
+import './sass/partials/_header.scss';
+import './sass/partials/_cardDisplay.scss';
+import './sass/partials/_pastResults.scss';
+import './sass/partials/_footer.scss';
+import './App.scss';
+
 
 const App = () => {
   // Defining State:
@@ -36,7 +45,7 @@ const App = () => {
 
       for (let key in dataResponse) {
         // Push each book name to an array we already created in newState
-        newState.push({key:key, tarotCard:dataResponse[key]});
+        newState.push({ key: key, tarotCard: dataResponse[key] });
       }
       // Call setUserData to update our components state using the local array newState:
       setUserData(newState);
@@ -110,10 +119,13 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const currentDate = Date();
+    const currentDate = new Date();
+    const date = currentDate.toDateString();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
     // console.log(Date());
     const tarotObject = {
-      date: currentDate,
+      date: `${date} ${hours}:${minutes}`,
       img: img,
       alt: alt,
       name: name,
@@ -131,7 +143,7 @@ const App = () => {
     // reset the state to an empty string
     setInitials('');
     setEmojiReact('');
-    
+
   }
 
   // Show & Hide Results Buttons
@@ -141,7 +153,7 @@ const App = () => {
 
   const handleShowMore = (event) => {
     event.preventDefault();
-    const addResults = (arrayLength + 6) >= 24? 24: 24;
+    const addResults = (arrayLength + 6) >= 24 ? 24 : 24;
     setCounter(addResults);
   }
   const handleShowLess = (event) => {
@@ -150,50 +162,87 @@ const App = () => {
     setCounter(subtractResults);
   }
 
-  // console.log(img);
-  // console.log(deck);
-
   return (
-    <div className="App wrapper">
-      <header><h1>Daily Tarot App</h1>
+    <div className="App">
+      {/* < Header drawCard handleSubmit handleRadioChange={emojiReact} handleTextChange={initials} /> */}
+      <header>
+        <div className="title-box">
+          <h1 className='daily-tarot'>The Daily Tarot</h1>
+        </div>
+        <div className="instructions-box">
+          <h2>Instructions</h2>
+          <p>Tarot cards provide a fun way to reflect on your day or set intentions first thing in the morning. Draw a card and see if you can relate to the meaning & symbolism. </p>
+        </div>
+        <div className="arrow-box">
+          <a href="#game-container" aria-label='Go to the game section.'>
+            <img className='arrow-icon game-container-icon' src="/assets/circle-chevron-down-solid.svg" alt="Arrow pointing down to the next section." />
+          </a>
+        </div>
       </header>
+
       <main>
-        <div className="outer-container">
-          {/* Ternary that displays a default image on the screen. As soon as the button is clicked, it is replaced with the drawn card. */}
-          <div className='card-container'>
-            {
-              hasClicked ? <img src={img} alt={alt} /> : <img src="/assets/tarot-card-0.jpg" alt="" />
-            }
-            <button onClick={drawCard}>Draw a Card!</button>
+        <div className="game-container" id='game-container'>
+          <div className="game-content-box wrapper">
+            {/* LEFT CONTENT BOX */}
+            <div className="game-left-box">
+              {/* CARD CONTAINER */}
+              <div className='card-container'>
+                {/* Ternary that displays a default image on the screen. As soon as the button is clicked, it is replaced with the drawn card. */}
+                {/* Once "Draw Card" is clicked, the img is pulled from the local file and displayed: */}
+                {hasClicked ? <img className='tarot-card' src={img} alt={alt} /> : <img className='tarot-card' src="/assets/tarot-card-0.jpg" alt="" />}
+                <button onClick={drawCard} className='button'>Draw a Card!</button>
+              </div>{/* End of .card-container */}
+            </div> {/* End of .game-left-box */}
+            {/* Once "Draw Card" is clicked, the data is pulled from the API and displayed below: */}
+            {/* RIGHT CONTENT BOX */}
+            <div className="game-right-outer-box">
+              {hasClicked ?
+                <div className="game-right-box">
+                  <div className="card-info-box">
+                  <h2 className='drawn-card-name'>{name}</h2>
+                  <h3>Meaning</h3>
+                  <p>{meaning}</p>
+                  <h3>Description</h3>
+                  <p>{description}</p>
+                  </div>
+                  {/* FORM BEGINS */}
+                  <form>
+                    <h3>Save your card!</h3>
+                    {/* INITIALS INPUT BEGINS */}
+                    <label htmlFor="initials">Initials:</label>
+                    <input type="text" id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} placeholder='AZ' required />
+                    {/* INITIALS INPUT ENDS */}
+                    {/* FIELDSET FOR EMOJI REACT BEGINS */}
+                    <fieldset onChange={handleRadioChange} value={emojiReact}>
+                      {/* Frown Icon Button */}
+                      <input type='radio' name='emoji-react' value='dislike' id='dislike' selected required />
+                      <label htmlFor="dislike"><img className='frown-icon icon' src="/assets/face-frown-regular-green-border.png" alt="Frowning face icon." /></label>
+                      {/* Meh Icon Button */}
+                      <input type='radio' name='emoji-react' value='meh' id='meh' />
+                      <label htmlFor="meh"><img className='meh-icon icon' src="/assets/face-meh-regular-yellow-border.png" alt="Unimpressed face icon." /></label>
+                      {/* Smile Icon Button */}
+                      <input type='radio' name='emoji-react' value='like' id='like' />
+                      <label htmlFor="like"><img className='smiling-icon icon' src="/assets/face-smile-regular-outline.png" alt="Smiling face icon." /></label>
+                      {/* Heart Icon Button */}
+                      <input type='radio' name='emoji-react' value='love' id='love' />
+                      <label htmlFor="love"><img className='heart-icon icon' src="/assets/heart-solid.png" alt="Heart-shaped icon." /></label>
+                    </fieldset>
+                    {/* FIELDSET FOR EMOJI REACT ENDS */}
+                    <input name='form-submit' className="submit-button button" type='Submit' onClick={handleSubmit} defaultValue='Save your Card!' />
+                  </form>
+                </div>/* End of .game-right-box */ : null
+              }
+            </div> {/* End of .game-right-outer-box */}
+          </div> {/* End of .game-content-box */}
+          <div className="arrow-box past-response-box">
+            <p>View Past Responses</p>
+            <a href="#past-responses" aria-label='Go to the game section.'>
+              <img className='arrow-icon past-response-icon' src="/assets/circle-chevron-down-solid.svg" alt="Arrow pointing down to the next section." />
+            </a>
           </div>
-          {hasClicked ? 
-            <div>
-            <h2>{name}</h2>
-            <h3>Meaning</h3>
-            <p>{meaning}</p>
-            <h3>Description</h3>
-            <p>{description}</p>
-            <form>
-              <h3>Save your card!</h3>
-              <label htmlFor="initials">Initials:</label>
-                <input type="text" id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} placeholder='AZ'/>
-              <fieldset onChange={handleRadioChange} value={emojiReact}>
-                {/* Frown Icon Button */}
-                <input type='radio' name='emoji-react' value='dislike' id='dislike' selected  />
-                <label htmlFor="dislike"><img className='frown-icon icon' src="/assets/face-frown-open-regular.svg" alt="Frowning face icon." /></label>
-                {/* Meg Icon Button */}
-                <input type='radio' name='emoji-react' value='meh' id='meh' />
-                <label htmlFor="meh"><img className='meh-icon icon' src="/assets/face-meh-regular.svg" alt="Unimpressed face icon." /></label>
-                {/* Smile Icon Button */}
-                <input type='radio' name='emoji-react' value='like' id='like' />
-                <label htmlFor="like"><img className='smiling-icon icon' src="/assets/face-smile-regular.svg" alt="Smiling face icon." /></label>
-              </fieldset>
-              <button name='form-submit' className="submit-button" type='Submit' onClick={handleSubmit}>Log your card!</button>
-            </form>
-          </div> : null
-          }
-          
-          <div>
+        </div> {/* End of .game-container */}
+        <div className="outer-container">
+          <div id='past-responses' className='past-responses wrapper'>
             {/* LOG OF PAST RESPONSES */}
             <ul className='log-ul'>
               {/* userData(my Firebase data) is destructured to a new array so that we can use the reverse() array function on it. Then I use the slice() function display a minimum of 6 result slots on the page & max of 24. This data is mapped over so I can display the individual properties to the page. */}
@@ -201,24 +250,26 @@ const App = () => {
                 return (
                   // If you console.log(log) you'll see the objects with key inside. Use this to fill out the individual key number on each li to prevent the key props error.
                   <li key={log.key} className='log-li'>
-                    <p className='log-initials'>{log.tarotCard.initials}</p>
-                    <h6>{log.tarotCard.date}</h6>
+                    <img src={log.tarotCard.img} alt={log.tarotCard.alt} className='tarot-log-img' />
+
                     <h4>{log.tarotCard.name}</h4>
+
                     {/* EMOJI REACTS */}
                     {/* Emoji reactions only display if they match the user's input. */}
-                    <p>{log.tarotCard.reaction === 'like'? <img className='smiling-icon icon log-icon' src="/assets/face-smile-regular.svg" alt="Smiling face icon." /> : null}</p>
+                    <p>{log.tarotCard.reaction === 'like' ? <img className='smiling-icon icon log-icon' src="/assets/face-smile-regular.svg" alt="Smiling face icon." /> : null}</p>
                     <p>{log.tarotCard.reaction === 'meh' ? <img className='meh-icon icon log-icon' src="/assets/face-meh-regular.svg" alt="Unimpressed face icon." /> : null}</p>
                     <p>{log.tarotCard.reaction === 'dislike' ? <img className='frown-icon icon log-icon' src="/assets/face-frown-open-regular.svg" alt="Frowning face icon." /> : null}</p>
-                    <img src={log.tarotCard.img} alt={log.tarotCard.alt} className='tarot-log-img' />
-                    
+                    <p className='log-initials'>{log.tarotCard.initials}</p>
+                    <h6>{log.tarotCard.date}</h6>
+
                   </li>
                 )
               })}
             </ul>
             {/* Buttons that display or hide based on number of results shown. Minimum 6 slots displayed, maximum 24. */}
-            {count > 6 ? <button name='show-more' className="submit-button show-more" type='Submit' onClick={handleShowMore}>Show more results!</button> : null}
-            {count >= 12 ? <button name='show-less' className="submit-button show-less" type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
-            {count >= 24 ? null : <button name='show-more' className="submit-button show-more" type='Submit' onClick={handleShowMore}>Show more results!</button>}
+            {count > 6 ? <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button> : null}
+            {count >= 12 ? <button name='show-less' className="submit-button show-less button" type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
+            {count >= 24 ? null : <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button>}
           </div>
         </div>
       </main>
