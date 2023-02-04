@@ -1,0 +1,69 @@
+@use "./variables" as *;
+
+/* GLOBAL STYLES */
+html {
+  scroll-behavior: smooth;
+}
+
+.wrapper {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: none;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}
+
+// Global Button/Link Styles -------------------
+.button,
+.link {
+  display: inline-block;
+  padding: 10px 15px;
+  color: $black;
+  background-color: $transparent;
+  border: 2px solid $yellow;
+  border-radius: 2px;
+  transition: 500ms;
+}
+
+.button:hover,
+.button:focus,
+.link:hover,
+.link:focus {
+  color: $black;
+  background-color: $yellow;
+  border: 2px solid $yellow;
+}
+
+.button:active,
+.link:active {
+  scale: 0.9;
+}

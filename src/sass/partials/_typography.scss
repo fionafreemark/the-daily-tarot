@@ -1,0 +1,71 @@
+@use "./variables" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Yeseva+One&display=swap');
+
+// Global Typography
+html {
+  font-size: $fs-global;
+  color: $black;
+}
+
+h1 {
+  font-family: $ff-headings;
+  color: $black;
+  font-weight: $fw-default;
+  font-size: $fs-3xl;
+  text-align: center;
+}
+
+h2,
+h3,
+h4 {
+  font-family: $ff-headings;
+  font-weight: $fw-default;
+  color: $black;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h2 {
+  font-size: $fs-lrg;
+}
+
+h3,
+h4 {
+  font-size: $fs-med;
+}
+
+p,
+a,
+button,
+label,
+textarea,
+li,
+input[type="email"],
+input[type="text"] {
+  font-family: $ff-body;
+  font-weight: $fw-default;
+  font-size: $fs-default;
+  color: $black;
+}
+
+p,
+label,
+textarea,
+li,
+input[type="email"],
+input[type="text"] {
+  line-height: 3rem;
+}
+
+a,
+button {
+  text-decoration: none;
+  border: 2px solid $transparent;
+}
+
+label,
+button,
+.nav-link {
+  font-weight: $fw-default;
+}
