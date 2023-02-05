@@ -26,6 +26,7 @@ h1,
 h2,
 h3,
 h4,
+h5,
 p,
 a,
 ul {
@@ -42,14 +43,18 @@ img {
   width: 100%;
 }
 
+label {
+  border: 1px solid $transparent;
+}
+
 // Global Button/Link Styles -------------------
 .button,
 .link {
   display: inline-block;
   padding: 10px 15px;
   color: $black;
-  background-color: $transparent;
-  border: 2px solid $yellow;
+  background-color: $yellow;
+  border: 1px solid $yellow;
   border-radius: 2px;
   transition: 500ms;
 }
@@ -58,12 +63,16 @@ img {
 .button:focus,
 .link:hover,
 .link:focus {
-  color: $black;
-  background-color: $yellow;
-  border: 2px solid $yellow;
+  color: $white;
+  background-color: $black;
+  border: 1px solid $black;
 }
 
 .button:active,
 .link:active {
   scale: 0.9;
+}
+
+input[type="submit"] {
+  display: inline-block;
 }

@@ -1,7 +1,5 @@
 @use "./variables" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Yeseva+One&display=swap');
-
 // Global Typography
 html {
   font-size: $fs-global;
@@ -40,9 +38,11 @@ a,
 button,
 label,
 textarea,
-li,
+li, 
+legend,
 input[type="email"],
-input[type="text"] {
+input[type="text"],
+input[type="submit"] {
   font-family: $ff-body;
   font-weight: $fw-default;
   font-size: $fs-default;
