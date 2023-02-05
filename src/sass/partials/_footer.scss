@@ -1,1 +1,18 @@
 @use "./variables" as *;
+
+footer {
+  background-color: $red;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  padding: 2% 0;
+  p, a {
+    color: white;
+    transition: 300ms;
+  }
+  a:hover {
+    color:$black;
+  }
+}

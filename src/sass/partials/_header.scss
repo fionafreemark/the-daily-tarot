@@ -42,6 +42,11 @@ header {
   background-color: $light-blue;
 }
 
+.daily-tarot {
+  text-shadow: 5px 2px 5px $light-blue;
+  align-self: center;
+}
+
 .instructions-box {
   background-color: $neutral;
   margin: 5% 14px 14px 14px;
@@ -56,14 +61,21 @@ header {
   }
 }
 
+.arrow-box {
+position: absolute;
+font-size: 5rem;
+  bottom: 5%;
+  left: 47%;
+}
+
 .arrow-icon {
-  width: 50px;
-  height: 50px;
+  font-size: 5rem;
   transition: 300ms;
-  position: absolute;
+  
   animation: fade 1.5s infinite ease-in-out;
     &:hover {
       scale: 0.8;
+      color: white;
     }
 }
 
@@ -79,121 +91,4 @@ header {
   }
 }
 
-.game-container-icon{
-  position: absolute;
-    bottom: 5%;
-    left: 48%;
-  }
-
-
-.game-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $light-blue;
-  position: relative;
-}
-
-.game-content-box {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  min-height: 70%;
-  width: 100%;
-}
-
-.game-left-box {
-  flex-basis: 30%;
-  height: 100%;
-}
-
-.card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .button {
-    align-self: center;
-    margin-top: 5%;
-  }
-}
-
-.tarot-card {
-  border: 15px white solid;
-  border-radius: 10px;
-}
-
-.game-right-outer-box {
-  flex-basis: 60%;
-  height: 100%;
-}
-
-.game-right-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 100%;
-}
-
-.drawn-card-name {
-  margin-bottom: 5%;
-}
-
-
-.icon {
-  padding: 10px;
-  // background-color: $white;
-  // border-radius: 50%;
-}
-
-.icon:hover,
-.icon:focus {
-  background-color: black;
-}
-
-.past-response-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 5%;
-  left: 48%;
-  p {
-    text-align: center;
-  }
-}
-// .outer-container {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   flex-basis: 100%;
-// }
-
-// .card-container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-//   position: relative;
-// }
-
-// .card-container::after {
-//   content: '';
-//   background-color: black;
-//   height: 2px;
-//   width: 100%;
-//   position: absolute;
-//   bottom: -2%;
-// }
-
-.daily-tarot {
-  text-shadow: 5px 2px 5px $light-blue;
-  align-self: center;
-}
 
