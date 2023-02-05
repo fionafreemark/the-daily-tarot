@@ -2,7 +2,7 @@
 import firebase from '../firebase';
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
-import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowAltCircleDown } from 'react-icons/fa'
+import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh} from 'react-icons/fa'
 
 const PastResponses = () => {
   // Defining State
