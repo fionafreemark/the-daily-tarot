@@ -11,7 +11,7 @@ import './sass/partials/_header.scss';
 import './sass/partials/_gameSection.scss';
 import './sass/partials/_pastResults.scss';
 import './sass/partials/_footer.scss';
-// import './App.scss';
+import './sass/partials/_mediaQueries.scss';
 
 const App = () => {
   return (

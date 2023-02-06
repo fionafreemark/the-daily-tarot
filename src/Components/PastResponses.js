@@ -2,7 +2,7 @@
 import firebase from '../firebase';
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
-import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh} from 'react-icons/fa'
+import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowAltCircleUp } from 'react-icons/fa'
 
 const PastResponses = () => {
   // Defining State
@@ -45,23 +45,23 @@ const PastResponses = () => {
   }
 
   return (
-    <section id='past-responses' className="outer-container past-responses">
+    <section id='saved-responses' className="outer-container saved-responses">
       <div className='wrapper'>
-        <h2 className='past-response-heading'>Past Responses</h2>
-        {/* LOG OF PAST RESPONSES */}
+        <h2 className='saved-response-heading'>Saved Responses</h2>
+        {/* LOG OF SAVED RESPONSES */}
         <ul className='log-ul'>
           {/* userData(my Firebase data) is destructured to a new array so that we can use the reverse() array function on it. Then I use the slice() function display a minimum of 6 result slots on the page & max of 24. This data is mapped over so I can display the individual properties to the page. */}
           {[...userData].reverse().slice(0, (count)).map((log) => {
             return (
               // If you console.log(log) you'll see the objects with key inside. Use this to fill out the individual key number on each li to prevent the key props error.
               <li key={log.key} className='log-li'>
-                <h4>{log.tarotCard.name}</h4>
+                
                 <img src={log.tarotCard.img} alt={log.tarotCard.alt} className='tarot-log-img' />
+                <h3 className="saved-card-name">{log.tarotCard.name}</h3>
                 <h5>{log.tarotCard.date}</h5>
                 <div className="emoji-log-box">
                   {/* INITIALS */}
-                  <h5>Saved By: </h5>
-                  <p className='log-initials'>{log.tarotCard.initials}</p>
+                  <h5 className='log-initials'>Saved By: {log.tarotCard.initials}</h5>
                 </div>
                 {/* EMOJI REACTS */}
                 {/* Emoji reactions only display if they match the user's input. */}
@@ -75,11 +75,19 @@ const PastResponses = () => {
         </ul>
           <div className="button-container">
         {/* Buttons that display or hide based on number of results shown. Minimum 6 slots displayed, maximum 24. */}
-        {/* {count > 6 ? <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button> : null} */}
-        {count >= 18 ? null : <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button>}
+          {/* {count < 6 ? null : <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button>} */}
+        {count <= 5 || count >= 18 ? null : <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button>}
         {count >= 12 ? <button name='show-less' className="submit-button show-less button" type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
           </div>
-      </div>
+        <div className="arrow-container">
+          <div className="arrow-box saved-response-arrow-box">
+            <p>Back to Top</p>
+            <a href="#top" aria-label='Go back to top of page.'>
+              <FaArrowAltCircleUp className='arrow-icon saved-response-icon' aria-label='Go to the game section.' />
+            </a>
+          </div> {/* End of .arrow-box .saved-response-arrow-box*/}
+        </div> {/* End of .arrow-container */}
+      </div> {/* End of .wrapper */}
     </section>
   )
 }
