@@ -1,11 +1,7 @@
 @use "./variables" as *;
 
-// * {
-//   border: 1px solid $red;
-// }
-
 header {
-  background-image: url(../../../public/assets/viva-luna-studios-7s2ip7OVktg-unsplash-lighter.jpg);
+  background-image: url(../../../public/assets/background-img-by-viva-luna-studios.jpg);
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -42,8 +38,7 @@ header {
   background-color: $light-blue;
 }
 
-.daily-tarot {
-  text-shadow: 5px 2px 5px $light-blue;
+.daily-tarot-h1 {
   align-self: center;
 }
 
@@ -60,35 +55,4 @@ header {
     padding: 5% 0;
   }
 }
-
-.arrow-box {
-position: absolute;
-font-size: 5rem;
-  bottom: 5%;
-  left: 47%;
-}
-
-.arrow-icon {
-  font-size: 5rem;
-  transition: 300ms;
-  
-  animation: fade 1.5s infinite ease-in-out;
-    &:hover {
-      scale: 0.8;
-      color: white;
-    }
-}
-
-@keyframes fade {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-}
-
 

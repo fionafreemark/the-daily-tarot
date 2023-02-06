@@ -1,16 +1,20 @@
 @use "./variables" as *;
 
 footer {
-  background-color: $red;
+  background-color: $green;
 }
 
 .footer-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   padding: 2% 0;
   p, a {
-    color: white;
+    color: $black;
     transition: 300ms;
+    text-align: center;
   }
   a:hover {
     color:$black;

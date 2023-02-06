@@ -1,11 +1,12 @@
 @use "./variables" as *;
 
-.past-responses {
+.saved-responses {
   background-color: $neutral;
   padding: 10% 0;
+  min-height: 500px;
 }
 
-.past-response-heading {
+.saved-response-heading {
   margin: 2% 0;
 }
 
@@ -18,11 +19,16 @@
 
 .log-li {
   flex-basis: 28%;
-  margin: 5% 1%;
+  margin: 3% 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.saved-card-name {
+  font-size: $fs-med;
+  margin-top: 5%;
 }
 
 .saved-img-container {
@@ -31,8 +37,7 @@
 
 .log-initials {
   text-transform: uppercase;
-  font-weight: 600;
-  padding-left: 5px;
+  font-weight: $fw-semi-bold;
 }
 
 .emoji-log-box {
@@ -43,7 +48,7 @@
 
 .tarot-log-img {
   max-width: 150px;
-  border: 8px solid white;
+  border: 8px solid $white;
   border-radius: 10px;
 }
 
@@ -53,16 +58,15 @@
 }
 
 .submit-button {
-    background-color: $light-blue;
-      color: $black;
-      border: 1px solid $black;
-
+  background-color: $light-blue;
+  color: $black;
+  border: 1px solid $black;
   margin: 10px;
 }
 
 .submit-button:hover,
 .submit-button:focus {
   background-color: $black;
-    color: $white;
-    border: 1px solid $black;
+  color: $white;
+  border: 1px solid $black;
 }
