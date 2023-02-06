@@ -1,4 +1,3 @@
-
 // Components
 import Header from './Components/Header';
 import GameSection from './Components/GameSection';

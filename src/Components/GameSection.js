@@ -33,11 +33,12 @@ const GameSection = () => {
         }
         // console.log(response.cards);
       } catch (error) {
-        // if (error.message === 'Not Found') {
-        //   alert('We could not fetch the data, try again!')
-        // } else {
-        //   alert('Sorry, something unusual happened.')
-        // }
+        console.log(error);
+        if (error.message === 'Not Found') {
+          alert('We could not fetch the data, try again!')
+        } else {
+          alert('Sorry, something unusual happened.')
+        } 
       }
     }
     storeDeck();
@@ -93,7 +94,6 @@ const GameSection = () => {
     // console.log(event.target.value);
     setEmojiReact(event.target.value);
   }
-
 
   // Submit Button
   const handleSubmit = (event) => {
