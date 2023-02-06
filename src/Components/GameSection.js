@@ -16,8 +16,6 @@ const GameSection = () => {
   const [isActive, setActive] = useState(false);
   const [rotate, setRotate] = useState(false);
 
-
-
   // API Call
   useEffect(() => {
     const storeDeck = async () => {
@@ -33,12 +31,20 @@ const GameSection = () => {
         }
         // console.log(response.cards);
       } catch (error) {
-        console.log(error);
-        if (error.message === 'Not Found') {
-          alert('We could not fetch the data, try again!')
-        } else {
-          alert('Sorry, something unusual happened.')
-        } 
+        // I consistently get a 304 Error when i run a try/catch. Spoke to Owen about it, its not breaking my site but I cannot find a solution just yet to this issue. Seems to relate to caching (on a hard refresh is doesn't show up, but then will on the following refresh). Leaving this error handling commented out at this point.
+        // From Stack Overflow:
+        // A status code of 304 means that the response is not modified.Essentially, it means that the resource hasn't changed since the last time you requested it.
+
+        // So say for example you request an endpoint twice, if the second time you request it you get a 304 status code, that means that both the first and the second response are the same and therefore it doesn't need updating.
+
+        // Usually browsers will attempt to cache information to speed up page delivery, and if the browser receives a 304 status code instead of requesting the resource again it will just serve the cached version of this information.
+        // https://stackoverflow.com/questions/69916518/react-js-response-304-status-at-the-log
+
+        // if (error.message === 'Not Found') {
+        //   alert('We could not fetch the data, try again!')
+        // } else {
+        //   alert('Sorry, something unusual happened.')
+        // } 
       }
     }
     storeDeck();
@@ -224,7 +230,7 @@ const GameSection = () => {
               </a>
             </div> {/* End of .arrow-box .saved-response-arrow-box*/}
           </div> {/* End of .arrow-container */}
-        </div> {/* End of .game-content-box */ }
+        </div> {/* End of .game-content-box */}
       </div> {/* End of .wrapper */}
       <div className={`confirmation-popup ${isActive ? 'active' : ''}`}>
         <button className="exit-button" onClick={toggleClass}>Exit</button>
