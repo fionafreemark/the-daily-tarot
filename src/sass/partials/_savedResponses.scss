@@ -2,9 +2,10 @@
 
 .saved-responses {
   background-color: $green;
+  background: linear-gradient(180deg, rgba(172, 186, 163, 1) 0%, rgba(195, 209, 187, 1) 49%);
   padding: 10% 0;
   min-height: 500px;
-    border-bottom: 10px solid $green;
+    border-bottom: 10px solid #c3d1bb;
       border-radius: 0 0 15px 15px;
       margin-bottom: -15px;
       position: relative;

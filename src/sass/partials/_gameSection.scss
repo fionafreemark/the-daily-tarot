@@ -18,12 +18,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $light-blue;
   position: relative;
+  z-index: 20;
   border-radius: 0 0 15px 15px;
   margin-bottom: -15px;
-  padding: 5% 0 5% 0;
-  z-index: 20;
+  background-color: $light-blue;
+  background: linear-gradient(180deg, rgba(176, 202, 215, 1) 0%, rgba(203, 228, 241, 1) 49%);;
 }
 
 .game-content-box {
@@ -56,8 +56,8 @@
 .tarot-card,
 .tarot-card.rotate,
 .tarot-card.rotate-back {
-  border: 15px $white solid;
   margin: 8px;
+  border: 15px $white solid;
   border-radius: 10px;
 }
 
@@ -89,10 +89,10 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   height: 100%;
-  border: 15px solid $white;
-  border-radius: 10px;
   animation: game-fade 1s ease-in-out 1;
   transition: 300ms;
+  border: 15px solid $white;
+  border-radius: 10px;
 }
 @keyframes game-fade {
   from {
@@ -139,26 +139,25 @@ form {
 
 .initials-label {
   padding: 1%;
-  font-weight: 400;
   text-transform: uppercase;
   font-weight: $fw-semi-bold;
 }
 
 .initials-input {
+  width: 15%;
   padding: 2px;
   border-radius: 2px;
   background-color: $transparent;
   border: 1px solid $black;
-  width: 15%;
   text-align: center;
 }
 
 legend {
-  text-align: center;
   display: inline-block;
-  text-transform: uppercase;
   width: 100%;
   margin-top: 2%;
+  text-align: center;
+  text-transform: uppercase;
   font-weight: $fw-semi-bold;
 }
 

@@ -4,6 +4,10 @@
 @media (max-width: 850px) {
 
   // Footer Section
+  .footer-container {
+    padding: 4% 0 2% 0;
+  }
+
   .sources {
     flex-direction: column;
     position: relative;
@@ -18,10 +22,10 @@
       content: " ";
       width: 96%;
       height: 1px;
+      position: absolute;
       left: 2%;
       top: 5%;
       background-color: $white;
-      position: absolute;
     }
 
     p:nth-of-type(1) {
@@ -49,6 +53,10 @@
   }
 
   // Game Section ---------------
+  .game-container {
+    padding: 7% 0;
+  }
+
   .game-content-box {
     flex-direction: column;
   }
