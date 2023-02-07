@@ -79,7 +79,7 @@ const GameSection = () => {
     // console.log(cardName);
     setName(cardName);
 
-    // Setting cardMeaning to randomCard variable's "meaning_up" description.
+    // Setting cardMeaning to randomCard variable's 'meaning_up' description.
     const cardMeaning = deck[randomCard].meaning_up;
     // console.log(cardMeaning);
     setMeaning(cardMeaning);
@@ -89,14 +89,14 @@ const GameSection = () => {
 
   // This event wil trigger every time the input changes. 
   const handleTextChange = (event) => {
-    // Tell react to update the state of "initials" to be equal to whatever is currently the value of the input field. 
+    // Tell react to update the state of 'initials' to be equal to whatever is currently the value of the input field. 
     setInitials(event.target.value);
   }
   // console.log(initials);
 
   // This event wil trigger every time the input changes. 
   const handleRadioChange = (event) => {
-    // Tell react to update the state of "emojiReact"" to be equal to whatever is currently the value of the input field 
+    // Tell react to update the state of 'emojiReact'' to be equal to whatever is currently the value of the input field 
     // console.log(event.target.value);
     setEmojiReact(event.target.value);
   }
@@ -105,7 +105,7 @@ const GameSection = () => {
   const handleSubmit = (event) => {
     // Prevent page refresh
     event.preventDefault();
-    // Get current date/time of submit to post in our "Saved Responses" section
+    // Get current date/time of submit to post in our 'Saved Responses' section
     const currentDate = new Date();
     const date = currentDate.toDateString();
     const hours = currentDate.getHours();
@@ -136,7 +136,7 @@ const GameSection = () => {
     toggleRotate();
   }
 
-  // Function to toggle "active" class on/off
+  // Function to toggle 'active' class on/off
   const toggleClass = () => {
     setActive(!isActive);
   };
@@ -145,87 +145,90 @@ const GameSection = () => {
   };
   // Referenced from https://devdojo.com/krissanawat101/3-ways-for-toggle-a-class-in-react to help me toggle my confirmation pop-up on and off. 
 
-
-
   return (
-    <section className="game-container" id='game-container'>
+    <section className='game-container' id='game-container'>
       <div className='wrapper'>
-        <div className="game-content-box wrapper">
+        <div className='game-content-box wrapper'>
           {/* LEFT CONTENT BOX */}
-          <div className="game-left-box">
+          <div className='game-left-box'>
             {/* CARD CONTAINER */}
             <div className='card-container'>
-              <h2 className="draw-card-title">Draw A Card</h2>
+              <h2 className='draw-card-title'>Draw A Card</h2>
               {/* Ternary that displays a default image on the screen. As soon as the button is clicked, it is replaced with the drawn card. */}
-              {/* Once "Draw Card" is clicked, the img is pulled from the local file and displayed: */}
+              {/* Once 'Draw Card' is clicked, the img is pulled from the local file and displayed: */}
               {hasClicked ?
-                <img className="tarot-card rotate-back" src={img} alt={alt} />
+                <img className='tarot-card rotate-back' src={img} alt={alt} />
                 :
-                <img className={`tarot-card 
-                ${hasClicked ? 'rotate' : ''}
-                `} src="/assets/tarot-back.jpg" alt="" />
+                <img className='tarot-card' src='/assets/tarot-back.jpg' alt='Back of tarot card.' />
               }
-              <button onClick={drawCard} className='button'>Draw a Card!</button>
+              <button onClick={drawCard} className='button'>Draw A Card!</button>
             </div>{/* End of .card-container */}
           </div> {/* End of .game-left-box */}
-          {/* Once "Draw Card" is clicked, the data is pulled from the API and displayed below: */}
+          {/* Once 'Draw Card' is clicked, the data is pulled from the API and displayed below: */}
           {/* RIGHT CONTENT BOX */}
-          <div className="game-right-outer-box">
+          <div className='game-right-outer-box'>
             {hasClicked ?
-              <div className="game-right-box">
-                <div className="card-info-box">
-                  <h3 className='drawn-card-name'>{name}</h3>
-                  <h4 className='results-header'>Meaning</h4>
-                  <p className='results-text'>{meaning}</p>
-                  <h4 className='results-header' >Description</h4>
-                  <p className='results-text description-text'>{description}</p>
-                </div>
-                {/* FORM BEGINS */}
-                <form>
-                  <h4 className='results-header'>Save your card</h4>
-                  {/* INITIALS INPUT */}
-                  <div className="initials-box">
-                    <label className='initials-label' htmlFor="initials">Initials:</label>
-                    <input className='initials-input' type="text" id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} placeholder='AZ' required />
-                  </div> {/* End of .initials-box */}
-                  {/* FIELDSET FOR EMOJI REACT BEGINS */}
-                  <fieldset onChange={handleRadioChange} value={emojiReact}>
-                    {/* Frown Icon Button */}
-                    <legend>Rate Your Card:</legend>
-                    <input type='radio' name='emoji-react' value='dislike' id='dislike' selected required />
-                    <label htmlFor="dislike">
-                      <FaRegFrown className="icon" />
-                    </label>
-                    {/* Meh Icon Button */}
-                    <input type='radio' name='emoji-react' value='meh' id='meh' />
-                    <label htmlFor="meh">
-                      <FaRegMeh className="icon" />
-                    </label>
-                    {/* Smile Icon Button */}
-                    <input type='radio' name='emoji-react' value='like' id='like' />
-                    <label htmlFor="like">
-                      <FaRegSmile className="icon" />
-                    </label>
-                    {/* Heart Icon Button */}
-                    <input type='radio' name='emoji-react' value='love' id='love' />
-                    <label htmlFor="love">
-                      <FaHeart className="icon" /></label>
-                  </fieldset>
-                  {/* FIELDSET FOR EMOJI REACT ENDS */}
-                  {/* SUBMIT BUTTON */}
-                  <div className="submit-button-box">
-                    <input name='form-submit' className=" button" type='Submit' onClick={handleSubmit} defaultValue='Save your Card!' />
-                  </div> {/* End of .submit-button-box */}
-                  {/* END OF SUBMIT BUTTON */}
-                </form>
-                {/* FORM ENDS */}
-              </div>/* End of .game-right-box */ : null
+              <>
+                <div className='game-right-box'>
+                  <div className='card-info-box'>
+                    <h3 className='drawn-card-name'>{name}</h3>
+                    <h4 className='results-header'>Meaning</h4>
+                    <p className='results-text'>{meaning}</p>
+                    <h4 className='results-header' >Description</h4>
+                    <p className='results-text description-text'>{description}</p>
+                  </div>
+                  {/* FORM BEGINS */}
+                  <form>
+                    <h4 className='results-header'>Save your card</h4>
+
+                    {/* INITIALS INPUT */}
+                    <div className='initials-box'>
+                      <label className='initials-label' htmlFor='initials'>Initials:</label>
+                      <input className='initials-input' type='text' id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} placeholder='AZ' required />
+                    </div> {/* End of .initials-box */}
+                    {/* FIELDSET FOR EMOJI REACT BEGINS */}
+                    <fieldset onChange={handleRadioChange} value={emojiReact}>
+                      {/* Frown Icon Button */}
+                      <legend>Rate Your Card:</legend>
+
+                      <input type='radio' name='emoji-react' value='dislike' id='dislike' required />
+                      <label htmlFor='dislike'>
+                        <FaRegFrown className='icon' />
+                      </label>
+                      {/* Meh Icon Button */}
+                      <input type='radio' name='emoji-react' value='meh' id='meh' />
+                      <label htmlFor='meh'>
+                        <FaRegMeh className='icon' />
+                      </label>
+                      {/* Smile Icon Button */}
+                      <input type='radio' name='emoji-react' value='like' id='like' />
+                      <label htmlFor='like'>
+                        <FaRegSmile className='icon' />
+                      </label>
+                      {/* Heart Icon Button */}
+                      <input type='radio' name='emoji-react' value='love' id='love' />
+                      <label htmlFor='love'>
+                        <FaHeart className='icon' /></label>
+
+                    </fieldset>
+                    {/* FIELDSET FOR EMOJI REACT ENDS */}
+                    {/* SUBMIT BUTTON */}
+                    <div className='submit-button-box'>
+                      <input name='form-submit' className='button save-card-button' type='Submit' onClick={handleSubmit} defaultValue='Save your Card!' />
+                    </div> {/* End of .submit-button-box */}
+                    {/* END OF SUBMIT BUTTON */}
+
+                  </form>
+                  {/* FORM ENDS */}
+                </div> {/* End of .game-right-box  */}
+              </>
+              : null
             }
-          </div> {/* End of .game-right-outer-box */}
-          <div className="arrow-container">
-            <div className="arrow-box saved-response-arrow-box">
+          </div>
+          <div className='arrow-container'>
+            <div className='arrow-box saved-response-arrow-box'>
               <p>View Saved Responses</p>
-              <a href="#saved-responses" aria-label='Go to the Saved Responses section.'>
+              <a href='#saved-responses' aria-label='Go to the Saved Responses section.'>
                 <FaArrowAltCircleDown className='arrow-icon saved-response-icon' aria-label='Go to the game section.' />
               </a>
             </div> {/* End of .arrow-box .saved-response-arrow-box*/}
@@ -233,12 +236,12 @@ const GameSection = () => {
         </div> {/* End of .game-content-box */}
       </div> {/* End of .wrapper */}
       <div className={`confirmation-popup ${isActive ? 'active' : ''}`}>
-        <button className="exit-button" onClick={toggleClass}>Exit</button>
+        <button className='exit-button' onClick={toggleClass}>Exit</button>
         <p className='saved-message'>Your card has been saved!</p>
-        <div className="link-box">
+        <div className='link-box'>
           <p>View Saved Responses</p>
-          <a href="#saved-responses" onClick={toggleClass} aria-label='Go to the Saved Responses section.'>
-            <FaArrowAltCircleDown className='popup-icon' aria-label='Go to the game section.' />
+          <a href='#saved-responses' onClick={toggleClass} aria-label='Go to the Saved Responses section.'>
+            <FaArrowAltCircleDown className='popup-icon' aria-label='Go to the Saved Responses section.' />
           </a>
         </div> {/* End of .link-box */}
       </div> {/* End of .confirmation-popup .active */}

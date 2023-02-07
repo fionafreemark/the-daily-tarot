@@ -1,7 +1,8 @@
 @use "./variables" as *;
 
 footer {
-  background-color: $green;
+  background-color: $grey;
+  padding: 2% 0;
 }
 
 .footer-container {
@@ -11,12 +12,39 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   padding: 2% 0;
-  p, a {
-    color: $black;
+
+  p {
+    color: $white;
+
+  }
+
+  a {
+    color: $white;
+    padding: 5px;
+    transition: 300ms;
+    border-radius: 5px;
+  }
+
+  p,
+  a {
     transition: 300ms;
     text-align: center;
+
   }
-  a:hover {
-    color:$black;
+
+  a:hover,
+  a:focus {
+    color: $green;
+  }
+}
+
+.sources {
+  display: flex;
+
+  p:nth-of-type(1)::after,
+  p:nth-of-type(2)::after {
+    content: "-";
+    color: $white;
+    padding: 0 5px;
   }
 }

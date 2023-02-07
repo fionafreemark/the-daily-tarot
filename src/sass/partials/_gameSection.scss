@@ -20,7 +20,10 @@
   align-items: center;
   background-color: $light-blue;
   position: relative;
-    padding: 5% 0 5% 0;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: -15px;
+  padding: 5% 0 5% 0;
+  z-index: 20;
 }
 
 .game-content-box {
@@ -56,36 +59,21 @@
   border: 15px $white solid;
   margin: 8px;
   border-radius: 10px;
-  transition: 300ms;
-}
-
-
-.tarot-card.rotate {
-      animation: rotate 2s ease-in-out 1 ;
-animation-delay: 2s;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotateY(0deg);
-  }
-
-  to {
-    transform: rotateY(-90deg);
-  }
 }
 
 .tarot-card.rotate-back {
-      animation: rotate-return 2s ease-in-out 1;
+  animation: rotate-return 1s ease-in-out 1;
 }
 
 @keyframes rotate-return {
   from {
     transform: rotateY(-90deg);
+    opacity: 0;
   }
 
   to {
     transform: rotateY(0deg);
+    opacity: 1;
   }
 }
 
@@ -102,11 +90,22 @@ animation-delay: 2s;
   flex-wrap: wrap;
   height: 100%;
   border: 15px solid $white;
-    border-radius: 10px;
+  border-radius: 10px;
+  animation: game-fade 1s ease-in-out 1;
+  transition: 300ms;
+}
+@keyframes game-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .card-info-box {
-      padding: 2% 0;
+  padding: 2% 0;
 }
 
 .drawn-card-name {
@@ -119,7 +118,7 @@ animation-delay: 2s;
 }
 
 .description-text {
-  max-height: 200px;
+  max-height: 250px;
   text-overflow: ellipsis;
   overflow: scroll;
   scrollbar-color: black;
@@ -128,8 +127,8 @@ animation-delay: 2s;
 // SAVE YOUR CARD SECTION
 
 form {
-    margin-top: 2%;
-    padding-bottom: 5%;
+  margin-top: 2%;
+  padding-bottom: 5%;
 }
 
 .initials-box {
@@ -184,6 +183,7 @@ input[type="radio"] {
   position: absolute;
   z-index: -1;
 }
+
 .icon {
   padding: 8px;
   font-size: 3rem;
@@ -195,14 +195,13 @@ input[type="radio"] {
 
 fieldset label:hover,
 fieldset label:focus,
-fieldset label:active
-input[type="radio"]:checked+label,
+fieldset label:active input[type="radio"]:checked+label,
 input[type="radio"]:focus+label,
 input[type="radio"]:active+label {
-color: $black;
-background-color: $white;
-border: 1px solid $black;
-border-radius: 2px;
+  color: $black;
+  background-color: $white;
+  border: 1px solid $black;
+  border-radius: 2px;
 }
 
 .submit-button-box {
@@ -211,10 +210,10 @@ border-radius: 2px;
 
 // Arrow pointing downward at bottom:
 .saved-response-arrow-box {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 // Confirmation Pop Up
@@ -234,9 +233,10 @@ justify-content: center;
   left: -125%;
   top: -125%;
 }
-.confirmation-popup.active  {
-top: 27%;
-left: 20%;
+
+.confirmation-popup.active {
+  top: 27%;
+  left: 20%;
 }
 
 .exit-button {
@@ -248,6 +248,7 @@ left: 20%;
   border-radius: 2px;
   cursor: pointer;
   transition: 300ms;
+
   &:hover,
   &:focus {
     background-color: $light-blue;
@@ -265,5 +266,5 @@ left: 20%;
 }
 
 .popup-icon {
-font-size: 4rem;
+  font-size: 4rem;
 }
