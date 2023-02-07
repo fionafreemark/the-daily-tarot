@@ -192,7 +192,7 @@ const GameSection = () => {
                   <fieldset onChange={handleRadioChange} value={emojiReact}>
                     {/* Frown Icon Button */}
                     <legend>Rate Your Card:</legend>
-                    <input type='radio' name='emoji-react' value='dislike' id='dislike' selected default />
+                    <input type='radio' name='emoji-react' value='dislike' id='dislike' selected required />
                     <label htmlFor="dislike">
                       <FaRegFrown className="icon" />
                     </label>
