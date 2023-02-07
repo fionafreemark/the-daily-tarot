@@ -74,8 +74,8 @@ const PastResponses = () => {
         {/* Button Container ------------------------------------- */}
         <div className='button-container'>
           {/* Buttons that display or hide based on number of results shown. Minimum 6 slots displayed, maximum 24. */}
-          {count <= 5 || count >= 18 ? null : <button name='show-more' className='submit-button show-more button' type='Submit' onClick={handleShowMore}>Show more results!</button>}
-          {count >= 12 ? <button name='show-less' className='submit-button show-less button' type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
+          {count <= 5 || count >= 18 ? null : <button name='show-more' className='submit-button show-more button' type='Submit' onClick={handleShowMore}>Show more results</button>}
+          {count >= 12 ? <button name='show-less' className='submit-button show-less button' type='Submit' onClick={handleShowLess}>Show fewer results</button> : null}
         </div> {/* End of .button-container  */}
         {/* End of Button Container ------------------------------ */}
         {/* Arrow Container ------------------------------------- */}

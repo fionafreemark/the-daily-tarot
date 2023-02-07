@@ -99,7 +99,7 @@ input[type="submit"] {
 @keyframes fade {
 
   0% {
-    opacity: 0;
+    opacity: .7;
   }
 
   50% {
@@ -107,6 +107,6 @@ input[type="submit"] {
   }
 
   100% {
-    opacity: 0;
+    opacity: .7;
   }
 }

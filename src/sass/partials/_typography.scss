@@ -45,7 +45,6 @@ input[type="email"],
 input[type="text"],
 input[type="submit"] {
   font-family: $ff-body;
-  font-weight: $fw-default;
   font-size: $fs-default;
   color: $grey;
 }
@@ -61,4 +60,10 @@ input[type="text"] {
 
 a {
   text-decoration: none;
+}
+
+button,
+.save-card-button {
+  text-transform: uppercase;
+  font-weight: $fw-semi-bold;
 }
