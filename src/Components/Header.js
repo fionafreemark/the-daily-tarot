@@ -1,4 +1,4 @@
-import { FaArrowAltCircleDown } from 'react-icons/fa';
+import { FaArrowDown } from 'react-icons/fa';
 
 const Header = () => {
   return (
@@ -15,7 +15,7 @@ const Header = () => {
       {/* Arrow Container ------------------------------------- */}
       <div className='arrow-container'>
       <a href='#game-container' aria-label='Go to the game section.' className='arrow-box'>
-        <FaArrowAltCircleDown className='arrow-icon game-section-arrow' aria-label='Go to the game section.' />
+        <FaArrowDown className='arrow-icon game-section-arrow' aria-label='Go to the game section.' />
       </a>
       </div>{/* End of .arrow-container */}
     </header>

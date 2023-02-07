@@ -1,7 +1,7 @@
 import firebase from '../firebase';
 import { getDatabase, ref, push } from 'firebase/database'
 import { useEffect, useState } from 'react';
-import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowAltCircleDown } from 'react-icons/fa'
+import { FaRegHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowDown } from 'react-icons/fa'
 
 const GameSection = () => {
   const [deck, setDeck] = useState({});
@@ -169,7 +169,7 @@ const GameSection = () => {
                       {/* Heart Icon Button */}
                       <input type='radio' name='emoji-react' value='love' id='love' />
                       <label htmlFor='love'>
-                        <FaHeart className='icon' /></label>
+                        <FaRegHeart className='icon' /></label>
                     </fieldset>
                     {/* Fieldset for Emoji React Ends -----------*/}
                     {/* Submit Button */}
@@ -192,7 +192,7 @@ const GameSection = () => {
         <div className='link-box'>
           <p>View Saved Cards</p>
           <a href='#saved-responses' onClick={toggleClass} aria-label='Go to the Saved Responses section.'>
-            <FaArrowAltCircleDown className='popup-icon' aria-label='Go to the Saved Responses section.' />
+            <FaArrowDown className='popup-icon' aria-label='Go to the Saved Responses section.' />
           </a>
         </div> {/* End of .link-box */}
       </div> {/* End of .confirmation-popup .active */}
