@@ -7,10 +7,10 @@ import Footer from './Components/Footer';
 import './sass/partials/_typography.scss';
 import './sass/partials/_global.scss';
 import './sass/partials/_header.scss';
-import './sass/partials/_gameSection.scss';
-import './sass/partials/_savedResponses.scss';
+import './sass/partials/_game-section.scss';
+import './sass/partials/_saved-responses.scss';
 import './sass/partials/_footer.scss';
-import './sass/partials/_mediaQueries.scss';
+import './sass/partials/_media-queries.scss';
 
 const App = () => {
   return (
