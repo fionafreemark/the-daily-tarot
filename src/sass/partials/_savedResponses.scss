@@ -1,9 +1,15 @@
 @use "./variables" as *;
 
 .saved-responses {
-  background-color: $neutral;
+  background-color: $green;
   padding: 10% 0;
   min-height: 500px;
+    border-bottom: 10px solid $green;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: -15px;
+      position: relative;
+      z-index: 10;
+      
 }
 
 .saved-response-heading {

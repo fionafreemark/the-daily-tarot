@@ -2,7 +2,7 @@
 import firebase from '../firebase';
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
-import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowAltCircleUp } from 'react-icons/fa'
+import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowAltCircleUp } from 'react-icons/fa';
 
 const PastResponses = () => {
   // Defining State
@@ -45,7 +45,7 @@ const PastResponses = () => {
   }
 
   return (
-    <section id='saved-responses' className="outer-container saved-responses">
+    <section id='saved-responses' className='outer-container saved-responses'>
       <div className='wrapper'>
         <h2 className='saved-response-heading'>Saved Responses</h2>
         {/* LOG OF SAVED RESPONSES */}
@@ -57,32 +57,32 @@ const PastResponses = () => {
               <li key={log.key} className='log-li'>
                 
                 <img src={log.tarotCard.img} alt={log.tarotCard.alt} className='tarot-log-img' />
-                <h3 className="saved-card-name">{log.tarotCard.name}</h3>
+                <h3 className='saved-card-name'>{log.tarotCard.name}</h3>
                 <h5>{log.tarotCard.date}</h5>
-                <div className="emoji-log-box">
+                <div className='emoji-log-box'>
                   {/* INITIALS */}
                   <h5 className='log-initials'>Saved By: {log.tarotCard.initials}</h5>
                 </div>
                 {/* EMOJI REACTS */}
                 {/* Emoji reactions only display if they match the user's input. */}
-                <p>{log.tarotCard.reaction === 'love' ? <FaHeart className="icon reaction-icon" /> : null}</p>
-                <p>{log.tarotCard.reaction === 'like' ? <FaRegSmile className="icon reaction-icon" /> : null}</p>
-                <p>{log.tarotCard.reaction === 'meh' ? <FaRegMeh className="icon reaction-icon" /> : null}</p>
-                <p>{log.tarotCard.reaction === 'dislike' ? <FaRegFrown className="icon reaction-icon" /> : null}</p>
+                <p>{log.tarotCard.reaction === 'love' ? <FaHeart className='icon reaction-icon' /> : null}</p>
+                <p>{log.tarotCard.reaction === 'like' ? <FaRegSmile className='icon reaction-icon' /> : null}</p>
+                <p>{log.tarotCard.reaction === 'meh' ? <FaRegMeh className='icon reaction-icon' /> : null}</p>
+                <p>{log.tarotCard.reaction === 'dislike' ? <FaRegFrown className='icon reaction-icon' /> : null}</p>
               </li>
             )
           })}
         </ul>
-          <div className="button-container">
+          <div className='button-container'>
         {/* Buttons that display or hide based on number of results shown. Minimum 6 slots displayed, maximum 24. */}
-          {/* {count < 6 ? null : <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button>} */}
-        {count <= 5 || count >= 18 ? null : <button name='show-more' className="submit-button show-more button" type='Submit' onClick={handleShowMore}>Show more results!</button>}
-        {count >= 12 ? <button name='show-less' className="submit-button show-less button" type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
+          {/* {count < 6 ? null : <button name='show-more' className='submit-button show-more button' type='Submit' onClick={handleShowMore}>Show more results!</button>} */}
+        {count <= 5 || count >= 18 ? null : <button name='show-more' className='submit-button show-more button' type='Submit' onClick={handleShowMore}>Show more results!</button>}
+        {count >= 12 ? <button name='show-less' className='submit-button show-less button' type='Submit' onClick={handleShowLess}>Show fewer results!</button> : null}
           </div>
-        <div className="arrow-container">
-          <div className="arrow-box saved-response-arrow-box">
+        <div className='arrow-container'>
+          <div className='arrow-box saved-response-arrow-box'>
             <p>Back to Top</p>
-            <a href="#top" aria-label='Go back to top of page.'>
+            <a href='#top' aria-label='Go back to top of page.'>
               <FaArrowAltCircleUp className='arrow-icon saved-response-icon' aria-label='Go to the game section.' />
             </a>
           </div> {/* End of .arrow-box .saved-response-arrow-box*/}

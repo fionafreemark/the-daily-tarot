@@ -1,4 +1,5 @@
-import { FaArrowAltCircleDown } from 'react-icons/fa'
+import { FaArrowAltCircleDown } from 'react-icons/fa';
+
 const Header = () => {
   return (
     <header id='top'>

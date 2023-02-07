@@ -1,5 +1,36 @@
 @use "./variables" as *;
 
+// MEDIA QUERIES 850PX BEGIN ---------------
+@media (max-width: 850px) {
+
+  // Footer Section
+  .sources {
+    flex-direction: column;
+    position: relative;
+
+    p:nth-of-type(1)::after,
+    p:nth-of-type(2)::after {
+      content: " ";
+      padding: 0 5px;
+    }
+
+    p:nth-of-type(1)::before {
+      content: " ";
+      width: 96%;
+      height: 1px;
+      left: 2%;
+      top: 5%;
+      background-color: $white;
+      position: absolute;
+    }
+
+    p:nth-of-type(1) {
+      margin-top: 3%;
+    }
+  }
+}
+
+// MEDIA QUERIES 850PX END ---------------
 // MEDIA QUERIES 800PX BEGIN ---------------
 @media (max-width: 800px) {
 
@@ -42,7 +73,10 @@
 
   .drawn-card-name {
     margin-top: 5%;
+  }
 
+  form {
+    padding-bottom: 8%;
   }
 
   .confirmation-popup {
@@ -65,6 +99,7 @@
   .tarot-log-img {
     max-width: 200px;
   }
+
 }
 
 // END OF MEDIA QUERIES 800PX ---------------
@@ -123,6 +158,10 @@
   .confirmation-popup.active {
     top: 65%;
     left: 7.5%;
+  }
+
+  .saved-message {
+    font-size: $fs-small;
   }
 
   // Saved Responses Section ---------------
