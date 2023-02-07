@@ -3,41 +3,6 @@
 // MEDIA QUERIES 850PX BEGIN ---------------
 @media (max-width: 850px) {
 
-  // Footer Section
-  .footer-container {
-    padding: 4% 0 2% 0;
-  }
-
-  .sources {
-    flex-direction: column;
-    position: relative;
-
-    p:nth-of-type(1)::after,
-    p:nth-of-type(2)::after {
-      content: " ";
-      padding: 0 5px;
-    }
-
-    p:nth-of-type(1)::before {
-      content: " ";
-      width: 96%;
-      height: 1px;
-      position: absolute;
-      left: 2%;
-      top: 5%;
-      background-color: $white;
-    }
-
-    p:nth-of-type(1) {
-      margin-top: 3%;
-    }
-  }
-}
-
-// MEDIA QUERIES 850PX END ---------------
-// MEDIA QUERIES 800PX BEGIN ---------------
-@media (max-width: 800px) {
-
   // Global 
   .wrapper {
     width: 90%;
@@ -108,9 +73,39 @@
     max-width: 200px;
   }
 
+  // Footer Section
+  .footer-container {
+    padding: 4% 0 2% 0;
+  }
+
+  .sources {
+    flex-direction: column;
+    position: relative;
+
+    p:nth-of-type(1)::after,
+    p:nth-of-type(2)::after {
+      content: " ";
+      padding: 0 5px;
+    }
+
+    p:nth-of-type(1)::before {
+      content: " ";
+      width: 96%;
+      height: 1px;
+      position: absolute;
+      left: 2%;
+      top: 5%;
+      background-color: $white;
+    }
+
+    p:nth-of-type(1) {
+      margin-top: 3%;
+    }
+  }
+
 }
 
-// END OF MEDIA QUERIES 800PX ---------------
+// END OF MEDIA QUERIES 850PX ---------------
 // MEDIA QUERIES 500PX BEGIN ---------------
 @media (max-width: 500px) {
 
