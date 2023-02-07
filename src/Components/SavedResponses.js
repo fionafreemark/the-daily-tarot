@@ -2,7 +2,7 @@
 import firebase from '../firebase';
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
-import { FaHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowAltCircleUp } from 'react-icons/fa';
+import { FaRegHeart, FaRegSmile, FaRegFrown, FaRegMeh, FaArrowUp } from 'react-icons/fa';
 
 const PastResponses = () => {
   // Defining State
@@ -62,7 +62,7 @@ const PastResponses = () => {
                   <h5 className='log-initials'>Saved By: {log.tarotCard.initials}</h5>
                 </div> {/* End of .emoji-log-box */}
                 {/* Emoji Reacts -------------------------------- */}
-                <p>{log.tarotCard.reaction === 'love' ? <FaHeart className='icon reaction-icon' /> : null}</p>
+                <p>{log.tarotCard.reaction === 'love' ? <FaRegHeart className='icon reaction-icon' /> : null}</p>
                 <p>{log.tarotCard.reaction === 'like' ? <FaRegSmile className='icon reaction-icon' /> : null}</p>
                 <p>{log.tarotCard.reaction === 'meh' ? <FaRegMeh className='icon reaction-icon' /> : null}</p>
                 <p>{log.tarotCard.reaction === 'dislike' ? <FaRegFrown className='icon reaction-icon' /> : null}</p>
@@ -81,9 +81,8 @@ const PastResponses = () => {
         {/* Arrow Container ------------------------------------- */}
         <div className='arrow-container'>
           <div className='arrow-box saved-response-arrow-box'>
-            <p>Back to Top</p>
-            <a href='#top' aria-label='Go back to top of page.'>
-              <FaArrowAltCircleUp className='arrow-icon saved-response-icon' aria-label='Go to the game section.' />
+            <a href='#top' aria-label='Go back to top of page.' title='Back to top.'>
+              <FaArrowUp className='arrow-icon saved-response-icon' aria-label='Go to the game section.' />
             </a>
           </div> {/* End of .arrow-box .saved-response-arrow-box*/}
         </div> {/* End of .arrow-container */}
