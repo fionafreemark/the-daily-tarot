@@ -88,7 +88,7 @@ input[type="submit"] {
   z-index: 10;
   transition: 300ms;
   animation: fade infinite 1.5s ease-in-out;
-  font-size: 4rem;
+  font-size: $fs-xl;
   color: $grey;
 
   &:hover {

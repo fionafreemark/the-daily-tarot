@@ -14,7 +14,6 @@ const GameSection = () => {
   const [initials, setInitials] = useState('');
   const [emojiReact, setEmojiReact] = useState('');
   const [isActive, setActive] = useState(false);
-  const [rotate, setRotate] = useState(false);
 
   // API Call
   useEffect(() => {
@@ -29,75 +28,48 @@ const GameSection = () => {
         } else {
           throw new Error('This call was unsuccessful!');
         }
-        // console.log(response.cards);
       } catch (error) {
-        // I consistently get a 304 Error when i run a try/catch. Spoke to Owen about it, its not breaking my site but I cannot find a solution just yet to this issue. Seems to relate to caching (on a hard refresh is doesn't show up, but then will on the following refresh). Leaving this error handling commented out at this point.
-        // From Stack Overflow:
-        // A status code of 304 means that the response is not modified.Essentially, it means that the resource hasn't changed since the last time you requested it.
-
-        // So say for example you request an endpoint twice, if the second time you request it you get a 304 status code, that means that both the first and the second response are the same and therefore it doesn't need updating.
-
-        // Usually browsers will attempt to cache information to speed up page delivery, and if the browser receives a 304 status code instead of requesting the resource again it will just serve the cached version of this information.
+        // I consistently get a 304 Error when I run a try/catch. Spoke to Owen about it, and researched a lot but the consensus seemed to be that a 304 isn't an error, but rather tells you the information "hasn't changed since the last time you requested it." The error notification continues, however, so its been commented out until I find a better solution. 
+        // Source:
         // https://stackoverflow.com/questions/69916518/react-js-response-304-status-at-the-log
-
         // if (error.message === 'Not Found') {
-        //   alert('We could not fetch the data, try again!')
+        //   console.log('We could not fetch the data, try again!')
         // } else {
-        //   alert('Sorry, something unusual happened.')
+        //   console.log('Sorry, something unusual happened.')
         // } 
       }
     }
     storeDeck();
   }, []);
-  // console.log(deck);
 
   const drawCard = () => {
     // // Randomizing function to choose a tarot card from 0 to 77.
     const randomCard = Math.floor(Math.random() * (deck.length));
-    // console.log(randomCard);
-    // const randomCardDraw = deck[randomCard];
-    // console.log(randomCardDraw);
-
     // Setting imgSource to path with matching randomCard variable. My local image files are numbered to match. 
     const imgSource = `/assets/tarot-card-${randomCard}.jpg`;
-    // console.log(imgSource);
     setImg(imgSource);
-    // console.log(img);
-
     // Setting imgDesc to matching randomCard variable.
     const imgDesc = `${deck[randomCard].desc}`;
-    // console.log(imgDesc);
     setDescription(imgDesc);
-
     // Setting imgAlt to randomCard variable's name.
     const imgAlt = `A tarot card depicting: ${deck[randomCard].name}`;
-    // console.log(imgAlt);
     setAlt(imgAlt);
-
     // Setting cardName to randomCard variable's name.
     const cardName = deck[randomCard].name;
-    // console.log(cardName);
     setName(cardName);
-
     // Setting cardMeaning to randomCard variable's 'meaning_up' description.
     const cardMeaning = deck[randomCard].meaning_up;
-    // console.log(cardMeaning);
     setMeaning(cardMeaning);
     setHasClicked(true);
   }
 
-
-  // This event wil trigger every time the input changes. 
   const handleTextChange = (event) => {
     // Tell react to update the state of 'initials' to be equal to whatever is currently the value of the input field. 
     setInitials(event.target.value);
   }
-  // console.log(initials);
 
-  // This event wil trigger every time the input changes. 
   const handleRadioChange = (event) => {
     // Tell react to update the state of 'emojiReact'' to be equal to whatever is currently the value of the input field 
-    // console.log(event.target.value);
     setEmojiReact(event.target.value);
   }
 
@@ -110,7 +82,6 @@ const GameSection = () => {
     const date = currentDate.toDateString();
     const hours = currentDate.getHours();
     const minutes = currentDate.getMinutes();
-    // console.log(Date());
     // Create an object to send to firebase on submit:
     const tarotObject = {
       date: `${date} ${hours}:${minutes}`,
@@ -122,51 +93,45 @@ const GameSection = () => {
       initials: initials,
       reaction: emojiReact,
     };
-    // console.log(tarotObject);
     // Reference the database
     const database = getDatabase(firebase);
     const dbRef = ref(database);
     // Push value of tarotObject tate to the database
     push(dbRef, tarotObject);
-    // reset the state to an empty string
-
+    // Reset the state to an empty string
     setInitials('');
     setEmojiReact('');
     toggleClass();
-    toggleRotate();
   }
 
-  // Function to toggle 'active' class on/off
+  // Function to toggle 'active' class on/off so my confirmation pop-up closes after either of 2 buttons are clicked.
   const toggleClass = () => {
     setActive(!isActive);
   };
-  const toggleRotate = () => {
-    setRotate(!rotate);
-  };
-  // Referenced from https://devdojo.com/krissanawat101/3-ways-for-toggle-a-class-in-react to help me toggle my confirmation pop-up on and off. 
 
   return (
     <section className='game-container' id='game-container'>
       <div className='wrapper'>
-        <div className='game-content-box wrapper'>
-          {/* LEFT CONTENT BOX */}
+        {/* Overall Game Content Box --------------------------------- */}
+        <div className='game-content-box'>
+          {/* Left Content Box --------------------------------*/}
           <div className='game-left-box'>
-            {/* CARD CONTAINER */}
+            {/* Card Container --------------------------------*/}
             <div className='card-container'>
-              <h2 className='draw-card-title'>Draw A Card</h2>
-              {/* Ternary that displays a default image on the screen. As soon as the button is clicked, it is replaced with the drawn card. */}
-              {/* Once 'Draw Card' is clicked, the img is pulled from the local file and displayed: */}
+              <h2 className='your-card-title'>Your Card</h2>
+              {/* "Draw Card" button triggers hasClicked state which displays the drawn card to the screen. */}
               {hasClicked ?
                 <img className='tarot-card rotate-back' src={img} alt={alt} />
                 :
                 <img className='tarot-card' src='/assets/tarot-back.jpg' alt='Back of tarot card.' />
               }
+              {/* Draw Card Button */}
               <button onClick={drawCard} className='button'>Draw A Card!</button>
             </div>{/* End of .card-container */}
           </div> {/* End of .game-left-box */}
-          {/* Once 'Draw Card' is clicked, the data is pulled from the API and displayed below: */}
-          {/* RIGHT CONTENT BOX */}
+          {/* Right Content Box --------------------------------*/}
           <div className='game-right-outer-box'>
+            {/* "Draw Card" button triggers hasClicked state which displays the following text/form on the screen */}
             {hasClicked ?
               <>
                 <div className='game-right-box'>
@@ -177,20 +142,18 @@ const GameSection = () => {
                     <h4 className='results-header' >Description</h4>
                     <p className='results-text description-text'>{description}</p>
                   </div>
-                  {/* FORM BEGINS */}
+                  {/* Form Begins --------------------------------*/}
                   <form>
                     <h4 className='results-header'>Save your card</h4>
-
-                    {/* INITIALS INPUT */}
+                    {/* Initials Input -----------------------------*/}
                     <div className='initials-box'>
                       <label className='initials-label' htmlFor='initials'>Initials:</label>
                       <input className='initials-input' type='text' id='initials' name='user-initials' maxLength={3} value={initials} onChange={handleTextChange} placeholder='AZ' required />
                     </div> {/* End of .initials-box */}
-                    {/* FIELDSET FOR EMOJI REACT BEGINS */}
+                    {/* Fieldset for Emoji React Begins ------------*/}
                     <fieldset onChange={handleRadioChange} value={emojiReact}>
                       {/* Frown Icon Button */}
                       <legend>Rate Your Card:</legend>
-
                       <input type='radio' name='emoji-react' value='dislike' id='dislike' required />
                       <label htmlFor='dislike'>
                         <FaRegFrown className='icon' />
@@ -209,42 +172,33 @@ const GameSection = () => {
                       <input type='radio' name='emoji-react' value='love' id='love' />
                       <label htmlFor='love'>
                         <FaHeart className='icon' /></label>
-
                     </fieldset>
-                    {/* FIELDSET FOR EMOJI REACT ENDS */}
-                    {/* SUBMIT BUTTON */}
+                    {/* Fieldset for Emoji React Ends -----------*/}
+                    {/* Submit Button */}
                     <div className='submit-button-box'>
                       <input name='form-submit' className='button save-card-button' type='Submit' onClick={handleSubmit} defaultValue='Save your Card!' />
                     </div> {/* End of .submit-button-box */}
-                    {/* END OF SUBMIT BUTTON */}
-
                   </form>
-                  {/* FORM ENDS */}
+                  {/* Form Ends --------------------------------*/}
                 </div> {/* End of .game-right-box  */}
               </>
               : null
-            }
-          </div>
-          <div className='arrow-container'>
-            <div className='arrow-box saved-response-arrow-box'>
-              <p>View Saved Responses</p>
-              <a href='#saved-responses' aria-label='Go to the Saved Responses section.'>
-                <FaArrowAltCircleDown className='arrow-icon saved-response-icon' aria-label='Go to the game section.' />
-              </a>
-            </div> {/* End of .arrow-box .saved-response-arrow-box*/}
-          </div> {/* End of .arrow-container */}
+            } {/* End of hasClicked ternary. */}
+          </div> {/* End of .game-right-outer-box */}
         </div> {/* End of .game-content-box */}
       </div> {/* End of .wrapper */}
+      {/* Confirmation Pop-Up -------------------------------- */}
       <div className={`confirmation-popup ${isActive ? 'active' : ''}`}>
         <button className='exit-button' onClick={toggleClass}>Exit</button>
         <p className='saved-message'>Your card has been saved!</p>
         <div className='link-box'>
-          <p>View Saved Responses</p>
+          <p>View Saved Cards</p>
           <a href='#saved-responses' onClick={toggleClass} aria-label='Go to the Saved Responses section.'>
             <FaArrowAltCircleDown className='popup-icon' aria-label='Go to the Saved Responses section.' />
           </a>
         </div> {/* End of .link-box */}
       </div> {/* End of .confirmation-popup .active */}
+      {/* End of Confirmation Pop-Up --------------------------*/}
     </section> /* End of .game-container section */
   )
 }

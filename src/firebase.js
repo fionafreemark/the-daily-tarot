@@ -16,6 +16,5 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-// *HAVE TO CHANGE app to firebase SO THE REST OF THE CODE WORKS
 const firebase = initializeApp(firebaseConfig);
 export default firebase;

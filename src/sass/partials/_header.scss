@@ -3,15 +3,17 @@
 header {
   background-image: url(../../../public/assets/background-img-by-viva-luna-studios.jpg);
   background-size: cover;
+  min-height: 800px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-      border-radius: 0 0 15px 15px;
-      margin-bottom: -15px;
-      z-index: 30;
+  border-radius: 0 0 15px 15px;
+  padding: 2% 0;
+  margin-bottom: -15px;
+  z-index: 30;
 }
 
 .title-box,
@@ -20,6 +22,7 @@ header {
   border-radius: 5px;
   position: relative;
   padding: 3%;
+  margin: 5% 0;
   z-index: 10;
 }
 
@@ -37,7 +40,6 @@ header {
 }
 
 .title-box {
-  margin: 14px 14px 5% 14px;
   background-color: $light-blue;
 }
 
@@ -47,7 +49,6 @@ header {
 
 .instructions-box {
   background-color: $neutral;
-  margin: 5% 14px 14px 14px;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -58,4 +59,3 @@ header {
     padding: 5% 0;
   }
 }
-
