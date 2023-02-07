@@ -33,9 +33,9 @@ const GameSection = () => {
         // Source:
         // https://stackoverflow.com/questions/69916518/react-js-response-304-status-at-the-log
         // if (error.message === 'Not Found') {
-        //   console.log('We could not fetch the data, try again!')
+        //   alert('We could not fetch the data, try again!')
         // } else {
-        //   console.log('Sorry, something unusual happened.')
+        //   alert('Sorry, something unusual happened.')
         // } 
       }
     }
@@ -80,11 +80,9 @@ const GameSection = () => {
     // Get current date/time of submit to post in our 'Saved Responses' section
     const currentDate = new Date();
     const date = currentDate.toDateString();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
     // Create an object to send to firebase on submit:
     const tarotObject = {
-      date: `${date} ${hours}:${minutes}`,
+      date: `${date}`,
       img: img,
       alt: alt,
       name: name,
@@ -126,7 +124,7 @@ const GameSection = () => {
                 <img className='tarot-card' src='/assets/tarot-back.jpg' alt='Back of tarot card.' />
               }
               {/* Draw Card Button */}
-              <button onClick={drawCard} className='button'>Draw A Card!</button>
+              <button onClick={drawCard} className='button'>Draw A Card</button>
             </div>{/* End of .card-container */}
           </div> {/* End of .game-left-box */}
           {/* Right Content Box --------------------------------*/}
@@ -176,7 +174,7 @@ const GameSection = () => {
                     {/* Fieldset for Emoji React Ends -----------*/}
                     {/* Submit Button */}
                     <div className='submit-button-box'>
-                      <input name='form-submit' className='button save-card-button' type='Submit' onClick={handleSubmit} defaultValue='Save your Card!' />
+                      <input name='form-submit' className='button save-card-button' type='Submit' onClick={handleSubmit} defaultValue='Save your Card' />
                     </div> {/* End of .submit-button-box */}
                   </form>
                   {/* Form Ends --------------------------------*/}
