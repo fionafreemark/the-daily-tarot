@@ -1,0 +1,69 @@
+@use "./variables" as *;
+
+// Global Typography
+html {
+  color: $black;
+  font-size: $fs-global;
+}
+
+h1 {
+  color: $black;
+  font-family: $ff-headings;
+  font-weight: $fw-default;
+  font-size: $fs-3xl;
+  text-align: center;
+}
+
+h2,
+h3,
+h4 {
+  color: $black;
+  font-family: $ff-headings;
+  font-weight: $fw-default;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h2,
+h3 {
+  font-size: $fs-lrg;
+}
+
+h4 {
+  font-size: $fs-med;
+}
+
+h5,
+p,
+a,
+button,
+label,
+textarea,
+li,
+legend,
+input[type="email"],
+input[type="text"],
+input[type="submit"] {
+  color: $grey;
+  font-family: $ff-body;
+  font-size: $fs-default;
+}
+
+p,
+label,
+textarea,
+li,
+input[type="email"],
+input[type="text"] {
+  line-height: $fs-lrg;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+.save-card-button {
+  text-transform: uppercase;
+  font-weight: $fw-semi-bold;
+}

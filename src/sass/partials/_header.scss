@@ -1,0 +1,61 @@
+@use "./variables" as *;
+
+header {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  padding: 2% 0;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: -15px;
+  background-image: url(../../../public/assets/background-img-by-viva-luna-studios.jpg);
+  background-size: cover;
+}
+
+.title-box,
+.instructions-box {
+  position: relative;
+  z-index: 10;
+  padding: 3%;
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 5% 0;
+}
+
+.title-box::before,
+.instructions-box::before {
+  content: " ";
+  position: absolute;
+  z-index: -10;
+  top: -18px;
+  left: -18px;
+  right: -18px;
+  bottom: -18px;
+  border-radius: 10px;
+  border: 15px solid #ffffff;
+}
+
+.title-box {
+  background-color: $light-blue;
+}
+
+.daily-tarot-h1 {
+  align-self: center;
+}
+
+.instructions-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  background-color: $neutral;
+
+  p {
+    padding: 5% 0;
+    text-align: center;
+  }
+}

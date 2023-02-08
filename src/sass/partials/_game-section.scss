@@ -1,0 +1,274 @@
+@use "./variables" as *;
+
+.your-card-title {
+  margin: 5% 0;
+}
+
+.game-container-icon {
+  position: absolute;
+  bottom: 5%;
+  left: 48%;
+}
+
+// GAME CONTAINER --------------------------------
+.game-container {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  padding: 10% 0;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: -15px;
+  background-color: $light-blue;
+  background: linear-gradient(180deg, rgba(176, 202, 215, 1) 0%, rgb(207, 228, 240) 50%);
+  ;
+}
+
+.game-content-box {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 70%;
+  width: 100%;
+}
+
+// LEFT BOX --------------------------------
+.game-left-box {
+  flex-basis: 25%;
+  height: 100%;
+}
+
+// Tarot Card ---------------------------
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    align-self: center;
+    margin-top: 5%;
+  }
+}
+
+.tarot-card,
+.tarot-card.rotate,
+.tarot-card.rotate-back {
+  margin: 8px;
+  border-radius: 10px;
+  border: 15px $white solid;
+}
+
+.tarot-card.rotate-back {
+  animation: rotate-return 1s ease-in-out 1;
+}
+
+@keyframes rotate-return {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+// RIGHT BOX --------------------------------
+.game-right-outer-box {
+  flex-basis: 60%;
+  height: 100%;
+}
+
+.game-right-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 100%;
+  border-radius: 10px;
+  border: 15px solid $white;
+  transition: 300ms;
+  animation: game-fade 1s ease-in-out 1;
+}
+
+@keyframes game-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.card-info-box {
+  padding: 2% 0;
+}
+
+.drawn-card-name {
+  margin-bottom: 2%;
+}
+
+.results-header,
+.results-text {
+  padding: 1.5%;
+}
+
+.results-text {
+  max-height: 175px;
+  padding: 5%;
+  overflow: scroll;
+  scrollbar-color: black;
+}
+
+// Save Your Card Section ---------------------------
+
+form {
+  margin-top: 2%;
+  padding-bottom: 5%;
+}
+
+.initials-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.initials-label {
+  padding: 1%;
+  text-transform: uppercase;
+  font-weight: $fw-semi-bold;
+}
+
+.initials-input {
+  width: 15%;
+  padding: 2px;
+  border-radius: 2px;
+  border: 1px solid $black;
+  background-color: $transparent;
+  text-align: center;
+}
+
+legend {
+  display: inline-block;
+  width: 100%;
+  margin-top: 2%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: $fw-semi-bold;
+}
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 5%;
+  margin: 0 2%;
+}
+
+input[type="radio"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.icon {
+  position: relative;
+  padding: 8px;
+  border-radius: 2px;
+  border: 1px solid $transparent;
+  font-size: $fs-xl;
+  transition: 300ms;
+}
+
+fieldset label:hover,
+fieldset label:focus,
+fieldset label:active input[type="radio"]:checked+label,
+input[type="radio"]:focus+label,
+input[type="radio"]:active+label {
+  border-radius: 2px;
+  border: 1px solid $black;
+  background-color: $white;
+  color: $black;
+}
+
+.submit-button-box {
+  text-align: center;
+}
+
+// Arrow pointing downward at bottom ---------------
+.saved-response-arrow-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Confirmation Pop Up -----------------------------
+.confirmation-popup {
+  position: absolute;
+  z-index: 10;
+  left: -125%;
+  top: -125%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  height: 30%;
+  border-radius: 10px;
+  border: 15px $white solid;
+  background-color: $yellow;
+  text-align: center;
+}
+
+.confirmation-popup.active {
+  top: 27%;
+  left: 20%;
+}
+
+.exit-button {
+  align-self: flex-end;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 2px;
+  border: 1px solid black;
+  background-color: $yellow;
+  cursor: pointer;
+  transition: 300ms;
+
+  &:hover,
+  &:focus {
+    background-color: $light-blue;
+  }
+}
+
+.saved-message {
+  font-size: $fs-lrg;
+}
+
+.link-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.popup-icon {
+  font-size: $fs-xl;
+}

@@ -1,0 +1,205 @@
+@use "./variables" as *;
+
+// MEDIA QUERIES 850PX BEGIN ---------------
+@media (max-width: 850px) {
+
+  // Global 
+  .wrapper {
+    width: 90%;
+  }
+
+  // Header Section ---------------
+  h1 {
+    font-size: $fs-xl;
+  }
+
+  .instructions-box {
+    width: 60%;
+  }
+
+  // Game Section ---------------
+  .game-container {
+    padding: 7% 0;
+  }
+
+  .game-content-box {
+    flex-direction: column;
+  }
+
+  .tarot-card {
+    max-width: 250px;
+    border: 8px solid $white;
+  }
+
+  .tarot-card.rotate-back {
+    border: 8px solid $white;
+  }
+
+  .game-right-outer-box {
+    margin: 3% 0;
+  }
+
+  .game-right-box {
+    border: 8px solid $white;
+    margin-top: 5%;
+  }
+
+  .drawn-card-name {
+    margin-top: 5%;
+  }
+
+  form {
+    padding-bottom: 8%;
+  }
+
+  .confirmation-popup {
+    width: 80%;
+    height: 20%;
+    border: 8px solid $black;
+  }
+
+  .confirmation-popup.active {
+    top: 65%;
+    left: 7%;
+  }
+
+  // Saved Responses Section ---------------
+  .log-li {
+    flex-basis: 46%;
+    margin: 2%;
+  }
+
+  .tarot-log-img {
+    max-width: 200px;
+  }
+
+  // Footer Section
+  .footer-container {
+    padding: 4% 0 2% 0;
+  }
+
+  .sources {
+    flex-direction: column;
+    position: relative;
+
+    p:nth-of-type(1)::after,
+    p:nth-of-type(2)::after {
+      content: " ";
+      padding: 0 5px;
+    }
+
+    p:nth-of-type(1)::before {
+      content: " ";
+      width: 96%;
+      height: 1px;
+      position: absolute;
+      left: 2%;
+      top: 5%;
+      background-color: $white;
+    }
+
+    p:nth-of-type(1) {
+      margin-top: 3%;
+    }
+  }
+
+}
+
+// END OF MEDIA QUERIES 850PX ---------------
+// MEDIA QUERIES 500PX BEGIN ---------------
+@media (max-width: 500px) {
+
+  // Global ---------------
+  .wrapper {
+    width: 95%;
+  }
+
+  // Header Section ---------------
+  h1 {
+    font-size: 3.4rem;
+  }
+
+  h2 {
+    font-size: $fs-lrg;
+  }
+
+  .instructions-box {
+    width: 80%;
+  }
+
+  .title-box::before,
+  .instructions-box::before {
+    top: -11px;
+    left: -11px;
+    right: -11px;
+    bottom: -11px;
+    border: 8px solid $white;
+  }
+
+  // Game Section ---------------
+  .game-container {
+    padding: 10% 0;
+  }
+
+  h3 {
+    font-size: $fs-lrg;
+  }
+
+  .game-left-box {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .card-container {
+    width: 100%;
+  }
+
+  .tarot-card {
+    max-width: 75%;
+  }
+
+  .results-text,
+  .results-header {
+    margin: 2% 0;
+  }
+
+  .results-text {
+    text-align: center;
+  }
+
+  .button {
+    width: 75%;
+  }
+
+  form {
+    margin: 10% 0;
+  }
+
+  .confirmation-popup.active {
+    top: 65%;
+    left: 7.5%;
+  }
+
+  .saved-message {
+    font-size: $fs-small;
+  }
+
+  // Saved Responses Section ---------------
+  .log-li {
+    flex-basis: 100%;
+    margin: 4% 0;
+  }
+
+  .tarot-log-img {
+    max-width: 175px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+
+}
