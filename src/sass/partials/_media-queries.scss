@@ -145,6 +145,19 @@
     font-size: $fs-lrg;
   }
 
+  .game-left-box {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .card-container {
+    width: 100%;
+  }
+
+  .tarot-card {
+    max-width: 75%;
+  }
+
   .results-text,
   .results-header {
     margin: 2% 0;
@@ -152,6 +165,10 @@
 
   .results-text {
     text-align: center;
+  }
+
+  .button {
+    width: 75%;
   }
 
   form {
@@ -180,7 +197,9 @@
   .button-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
   }
+
 
 }

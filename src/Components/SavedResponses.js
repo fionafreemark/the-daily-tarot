@@ -47,7 +47,7 @@ const PastResponses = () => {
   return (
     <section id='saved-responses' className='outer-container saved-responses'>
       <div className='wrapper'>
-        <h2 className='saved-response-heading'>Saved Responses</h2>
+        <h2 className='h2-saved-response'>Saved Responses</h2>
         {/* Saved Responses List-------------------------------- */}
         <ul className='log-ul'>
           {/* userData(my Firebase data) is destructured to a new array so that we can use the reverse() array function on it. Then I use the slice() function display a minimum of 6 result slots on the page & max of 24. This data is mapped over so I can display the individual properties to the page. */}

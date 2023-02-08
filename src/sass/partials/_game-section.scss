@@ -2,8 +2,6 @@
 
 .your-card-title {
   margin: 5% 0;
-  width: 100%;
-  display: block;
 }
 
 .game-container-icon {
@@ -14,15 +12,15 @@
 
 // GAME CONTAINER --------------------------------
 .game-container {
-  min-height: 100vh;
-  height: 100%;
-  padding: 10% 0;
+  position: relative;
+  z-index: 20;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  z-index: 20;
+  min-height: 100vh;
+  height: 100%;
+  padding: 10% 0;
   border-radius: 0 0 15px 15px;
   margin-bottom: -15px;
   background-color: $light-blue;
@@ -31,13 +29,13 @@
 }
 
 .game-content-box {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   min-height: 70%;
   width: 100%;
-  position: relative;
 }
 
 // LEFT BOX --------------------------------
@@ -63,8 +61,8 @@
 .tarot-card.rotate,
 .tarot-card.rotate-back {
   margin: 8px;
-  border: 15px $white solid;
   border-radius: 10px;
+  border: 15px $white solid;
 }
 
 .tarot-card.rotate-back {
@@ -95,10 +93,10 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   height: 100%;
-  animation: game-fade 1s ease-in-out 1;
-  transition: 300ms;
-  border: 15px solid $white;
   border-radius: 10px;
+  border: 15px solid $white;
+  transition: 300ms;
+  animation: game-fade 1s ease-in-out 1;
 }
 
 @keyframes game-fade {
@@ -126,9 +124,9 @@
 
 .results-text {
   max-height: 175px;
+  padding: 5%;
   overflow: scroll;
   scrollbar-color: black;
-  padding: 5%;
 }
 
 // Save Your Card Section ---------------------------
@@ -154,8 +152,8 @@ form {
   width: 15%;
   padding: 2px;
   border-radius: 2px;
-  background-color: $transparent;
   border: 1px solid $black;
+  background-color: $transparent;
   text-align: center;
 }
 
@@ -184,18 +182,18 @@ fieldset label {
 }
 
 input[type="radio"] {
-  opacity: 0;
   position: absolute;
   z-index: -1;
+  opacity: 0;
 }
 
 .icon {
   position: relative;
   padding: 8px;
-  transition: 300ms;
-  border: 1px solid $transparent;
   border-radius: 2px;
-  font-size: $fs-lrg;
+  border: 1px solid $transparent;
+  font-size: $fs-xl;
+  transition: 300ms;
 }
 
 fieldset label:hover,
@@ -203,10 +201,10 @@ fieldset label:focus,
 fieldset label:active input[type="radio"]:checked+label,
 input[type="radio"]:focus+label,
 input[type="radio"]:active+label {
-  border: 1px solid $black;
   border-radius: 2px;
-  color: $black;
+  border: 1px solid $black;
   background-color: $white;
+  color: $black;
 }
 
 .submit-button-box {
@@ -223,18 +221,18 @@ input[type="radio"]:active+label {
 
 // Confirmation Pop Up -----------------------------
 .confirmation-popup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   position: absolute;
   z-index: 10;
   left: -125%;
   top: -125%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 60%;
   height: 30%;
-  border: 15px $white solid;
   border-radius: 10px;
+  border: 15px $white solid;
   background-color: $yellow;
   text-align: center;
 }
@@ -248,11 +246,11 @@ input[type="radio"]:active+label {
   align-self: flex-end;
   padding: 10px;
   margin: 5px;
-  border: 1px solid black;
   border-radius: 2px;
+  border: 1px solid black;
+  background-color: $yellow;
   cursor: pointer;
   transition: 300ms;
-  background-color: $yellow;
 
   &:hover,
   &:focus {

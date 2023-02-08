@@ -2,13 +2,13 @@
 
 // Global Typography
 html {
-  font-size: $fs-global;
   color: $black;
+  font-size: $fs-global;
 }
 
 h1 {
-  font-family: $ff-headings;
   color: $black;
+  font-family: $ff-headings;
   font-weight: $fw-default;
   font-size: $fs-3xl;
   text-align: center;
@@ -17,9 +17,9 @@ h1 {
 h2,
 h3,
 h4 {
+  color: $black;
   font-family: $ff-headings;
   font-weight: $fw-default;
-  color: $black;
   text-transform: uppercase;
   text-align: center;
 }
@@ -44,9 +44,9 @@ legend,
 input[type="email"],
 input[type="text"],
 input[type="submit"] {
+  color: $grey;
   font-family: $ff-body;
   font-size: $fs-default;
-  color: $grey;
 }
 
 p,

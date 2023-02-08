@@ -47,10 +47,10 @@ label {
 .link {
   display: inline-block;
   padding: 10px 15px;
-  color: $black;
-  background-color: $yellow;
-  border: 1px solid $grey;
   border-radius: 5px;
+  border: 1px solid $grey;
+  background-color: $yellow;
+  color: $black;
   transition: 500ms;
 }
 
@@ -58,9 +58,9 @@ label {
 .button:focus,
 .link:hover,
 .link:focus {
-  color: $white;
-  background-color: $grey;
   border: 1px solid $grey;
+  background-color: $grey;
+  color: $white;
 }
 
 .button:active,
@@ -74,22 +74,21 @@ input[type="submit"] {
 
 // Arrow Pointing Down in Each Section ---------
 .arrow-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   justify-self: flex-end;
-  position: relative;
-  margin-top: 3%;
   width: 100%;
   height: 85px;
+  margin-top: 3%;
 }
 
 .arrow-icon {
-  z-index: 10;
+  color: $grey;
+  font-size: $fs-xl;
   transition: 300ms;
   animation: fade infinite 1.5s ease-in-out;
-  font-size: $fs-xl;
-  color: $grey;
 
   &:hover {
     scale: 0.9;
