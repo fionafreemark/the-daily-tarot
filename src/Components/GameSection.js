@@ -23,20 +23,9 @@ const GameSection = () => {
         const data = await fetch(url);
         const response = await data.json();
         setDeck(response.cards);
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('This call was unsuccessful!');
-        }
       } catch (error) {
-        // I consistently get a 304 Error when I run a try/catch. Spoke to Owen about it, and researched a lot but the consensus seemed to be that a 304 isn't an error, but rather tells you the information "hasn't changed since the last time you requested it." The error notification continues, however, so its been commented out until I find a better solution. 
-        // Source:
-        // https://stackoverflow.com/questions/69916518/react-js-response-304-status-at-the-log
-        // if (error.message === 'Not Found') {
-        //   alert('We could not fetch the data, try again!')
-        // } else {
-        //   alert('Sorry, something unusual happened.')
-        // } 
+        console.log(error);
+          alert('We could not fetch the data, try again!')
       }
     }
     storeDeck();
@@ -91,15 +80,22 @@ const GameSection = () => {
       initials: initials,
       reaction: emojiReact,
     };
-    // Reference the database
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
-    // Push value of tarotObject tate to the database
-    push(dbRef, tarotObject);
-    // Reset the state to an empty string
-    setInitials('');
-    setEmojiReact('');
-    toggleClass();
+    if (
+      !initials ||
+      !emojiReact
+    ) {
+      alert('Please complete the form!');
+    } else {
+      // Reference the database
+      const database = getDatabase(firebase);
+      const dbRef = ref(database);
+      // Push value of tarotObject tate to the database
+      push(dbRef, tarotObject);
+      // Reset the state to an empty string
+      setInitials('');
+      setEmojiReact('');
+      toggleClass();
+    }
   }
 
   // Function to toggle 'active' class on/off so my confirmation pop-up closes after either of 2 buttons are clicked.
