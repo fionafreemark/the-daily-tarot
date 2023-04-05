@@ -14,4 +14,5 @@ https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0
 ### Background Image by Viva Luna Studios
 https://unsplash.com/photos/7s2ip7OVktg
 
-<img width="480" alt="the-daily-tarot-preview" src="https://user-images.githubusercontent.com/79855684/217674860-70a9902e-0ecb-433c-8b8d-8a935bf1b5c6.png">
+
+![fiona-freemark-the-daily-tarot-ipad-iphone](https://user-images.githubusercontent.com/79855684/230223244-a1ee231e-e74b-43d9-8d70-fe85bd298302.jpg)
