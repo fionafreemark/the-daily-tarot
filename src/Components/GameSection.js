@@ -18,14 +18,14 @@ const GameSection = () => {
   // API Call
   useEffect(() => {
     const storeDeck = async () => {
-      const url = new URL('https://tarot-api.onrender.com/api/v1/cards/');
+      const url = new URL('https://tarot-api-3hv5.onrender.com/api/v1/cards/');
       try {
         const data = await fetch(url);
         const response = await data.json();
         setDeck(response.cards);
       } catch (error) {
         console.log(error);
-          alert('Unfortunately this Tarot API is no longer available. Please feel free to browse the website while I source a new tarot API for full functionality.')
+          alert('Unfortunately there was an issue reaching the API. Please try again later.')
       }
     }
     storeDeck();
