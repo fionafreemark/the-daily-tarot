@@ -18,7 +18,7 @@ const GameSection = () => {
   // API Call
   useEffect(() => {
     const storeDeck = async () => {
-      const url = new URL('https://tarot-api.onrender.com/api/v1/cards/');
+      const url = new URL('https://tarot-api-3hv5.onrender.com/api/v1/cards/');
       try {
         const data = await fetch(url);
         const response = await data.json();
