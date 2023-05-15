@@ -25,7 +25,7 @@ const GameSection = () => {
         setDeck(response.cards);
       } catch (error) {
         console.log(error);
-          alert('Unfortunately this Tarot API is no longer available. Please feel free to browse the website while I source a new tarot API for full functionality.')
+          alert('Unfortunately there was an issue reaching the API. Please try again later.')
       }
     }
     storeDeck();
